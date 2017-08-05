@@ -23,7 +23,6 @@ class DeteccionOutliers:
         print("\n")
         print(datosATestear)
         
-        
         if Metodo == "Elliptic":
             outliersValuesList, inliersValuesList =   self.obtenerOutliersInliersEllipticEnvelope(datosOriginales, datosATestear)
         elif Metodo == "Forest":
@@ -40,19 +39,30 @@ class DeteccionOutliers:
     #Inicalizacion datos para obtener outliers e inliers, otenemos valores originales y valores a testear
 #    def setDataValues(self, matriz, anioTrainInicio, AnioTrainFin, AnioTest, labels):
     def setDataValues(self, matriz, DatoTrainInicio, DatoTrainFin, ValoresTest, labels):
-
-        
-        print(labels)
         if 'Anio' in labels[0] and 'Pais' in labels[1] and 'Cantidad' in labels[2]:
-            print(matriz)
-            print(labels)
-            numColumnas = 1
-            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas ) 
 
-            
+            ##OBTENCION DATOS INICIALES
+            numColumnas = len(matriz.loc[DatoTrainInicio])
+            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas, labels ) 
+            ####OBTENCION DATOS DE PRUEBA
+            indices = np.arange(0, numColumnas, 1)
+            indices = np.tile(indices, DatoTrainFin - DatoTrainInicio +1)
+            datosOriginales = np.column_stack((indices, valoresDatosIniciales))
+            tamanioIndices = len(matriz.loc[DatoTrainFin])                    
+            indices = np.arange(0, tamanioIndices , 1)
+            indices = np.tile(indices, len(ValoresTest))
+
+            valoresDatosTesting = utilidadesMatriz.GetValuesArrayIntegers(ValoresTest[0], ValoresTest[len(ValoresTest)-1], matriz, numColumnas, labels ) 
+
+            datosATestear = np.column_stack((indices, valoresDatosTesting))
+
+            print(datosATestear)
+           
+            return datosOriginales, datosATestear
+            #ARRIBA OK
         elif  'Anio' in labels[0] or 'Mes' in labels[0] and 'Cantidad' in labels[1]:
             numColumnas = 1
-            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas ) 
+            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas, labels ) 
             if 'Mes' in labels[0]:
                 indices = np.arange(0, len(valoresDatosIniciales), 1)
                 print(indices)

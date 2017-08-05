@@ -66,7 +66,7 @@ class Graphics():
             xx1, yy1 = np.meshgrid(np.linspace(-2, len(listaColumnas), len(listaColumnas)), np.linspace(-500, max_Y*2, len(listaFilas)))       
             textoInferior = listaFilas[0]   
 
-        elif 'Anio' in listaFilas[0] and 'Mes' in listaFilas[1] or 'Ciudad' in listaFilas[1] and 'Cantidad' in listaFilas[2] or 'Numero_Vuelos' in listaFilas[2]:
+        elif 'Anio' in listaFilas[0] and 'Mes' in listaFilas[1] or 'Ciudad' in listaFilas[1] or 'Pais' in listaFilas[1] and 'Cantidad' in listaFilas[2] or 'Numero_Vuelos' in listaFilas[2]:
             if 'Mes' in listaFilas[1]:
                 x = np.arange(0, len(Constantes.Meses))
                 valoresColumnas = Constantes.Meses

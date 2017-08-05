@@ -52,7 +52,30 @@ class UtilidadesMatriz:
 #        return s
     
     #Obtenemos los valores de los anios que se corresponden con los anios iniciales y los devolvemos en una serie
-    def GetValuesArrayIntegers(self, valorInicial, ValorFinal, matriz, numColumnas):
+    def GetValuesArrayIntegers(self, ValorInicial, ValorFinal, matriz, numColumnas, labels):
+        
+        if len(labels) == 3 :
+            num_anios = ValorFinal-ValorInicial + 1
+            array_1 = np.zeros(num_anios * numColumnas)
+#            print(array_1)
+#            print(matriz.loc[ValorInicial : ValorFinal])
+            pos = 0
+            anios = np.arange(ValorInicial, ValorFinal+1, 1)
+
+            for anio in anios:
+
+                valores = matriz.loc[anio]
+                for valor in valores:
+                    array_1[pos] = valor
+                    pos = pos +1
+                   
+            s = pd.Series(array_1)
+            s = s.astype(int)
+            return s
+
+#            print(len(matriz.loc[ValorInicial : ValorFinal+1]))
+#            return matriz.loc[ValorInicial : ValorFinal]
+#            print(matriz.loc[ValorInicial : ValorFinal])
         #TODO COMPROBAR SI ALGO HA CAMBIADO
 
 #        num_anios = AnioFin - AnioInicio +1
@@ -69,9 +92,9 @@ class UtilidadesMatriz:
 #                
 #        s = pd.Series(array_1)
 #        s = s.astype(int)
-#        
 #        return s
-        return matriz.loc[valorInicial : ValorFinal]["Cantidad"]
+        elif len(labels) == 2:            
+            return matriz.loc[ValorInicial : ValorFinal]["Cantidad"]
 
     
     

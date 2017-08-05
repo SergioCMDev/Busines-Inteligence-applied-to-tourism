@@ -202,7 +202,7 @@ def obtener_outliers_inliers_mes_cantidad(MesInicioIniciales, MesFinIniciales, M
 
 
 
-def obtener_outliers_inliers_anios_pais_cantidad(AnioInicio, AnioFin, Metodo, body):
+def obtener_outliers_inliers_anios_pais_cantidad(AnioInicio, AnioFin, Metodo, body):#OK
     """
     Obtener los valores fuera de lo comun dado unos valores iniciales y unos valores a tratar
     Este metodo trata los valores de cada mes de cada año y tras pasarle valores a probar decide los inliers y los outliers
@@ -234,11 +234,12 @@ def obtener_outliers_inliers_anios_pais_cantidad(AnioInicio, AnioFin, Metodo, bo
             outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
         else:
             outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
-#        print(outliersValuesList)
-#        print("\n")
-#        print(inliersValuesList)            
-#        print(matriz)
-    return 'do some magic!'
+        print(outliersValuesList)
+        print("\n")
+        print(inliersValuesList)            
+        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaColumnas)
+        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaColumnas)
+#    #TODO METODO PARA DEVOLVER OUTLIERS EN JSON    return 'do some magic!'
 
 
 
@@ -267,7 +268,7 @@ def obtener_outliers_inliers_anios_mes_cantidad(AnioInicio, AnioFin, AnioACompro
                 if 'Anio' not in listaLabels and 'Cantidad' not in listaLabels:
                     listaLabels.append('Anio')
                     listaLabels.append('Mes')
-                    listaLabels.append('Numero_Vuelos')
+                    listaLabels.append('Cantidad')
                 tupla = (item.anio, item.mes, item.numero_vuelos)
                 listaValores.append(tupla)
                 
