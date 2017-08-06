@@ -57,7 +57,7 @@ class Graphics():
             textoInferior = listaFilas[0]
         elif 'Ciudad' in listaFilas[0] and 'Cantidad' in listaFilas[1]:
             valoresColumnas = listaColumnas
-            x = np.arange(0, len(listaColumnas)-1)
+            x = np.arange(0, len(listaColumnas))
             xx1, yy1 = np.meshgrid(np.linspace(-2, len(listaColumnas), len(listaColumnas)), np.linspace(-500, max_Y*2, len(listaFilas)))       
             textoInferior = listaFilas[0]    
         elif 'Pais' in listaFilas[0] and 'Cantidad' in listaFilas[1]:
@@ -65,15 +65,30 @@ class Graphics():
             x = np.arange(0, len(listaColumnas))
             xx1, yy1 = np.meshgrid(np.linspace(-2, len(listaColumnas), len(listaColumnas)), np.linspace(-500, max_Y*2, len(listaFilas)))       
             textoInferior = listaFilas[0]   
-
-        elif 'Anio' in listaFilas[0] and 'Mes' in listaFilas[1] or 'Ciudad' in listaFilas[1] or 'Pais' in listaFilas[1] and 'Cantidad' in listaFilas[2] or 'Numero_Vuelos' in listaFilas[2]:
+        elif 'Anio' in listaFilas[0] and 'Ciudad' in listaFilas[1] and 'Cantidad'in listaFilas[2]:
+#            print(listaColumnas)
+#            print(len(listaColumnas)) #TODO
+            x = np.arange(0, len(listaColumnas))
+            valoresColumnas = listaColumnas
+            xx1, yy1 = np.meshgrid(np.linspace(-1, len(x), 500), np.linspace(0, max_Y*2, 500)) 
+            textoInferior = listaFilas[0]
+        elif 'Anio' in listaFilas[0] and 'Pais' in listaFilas[1] and 'Cantidad' in listaFilas[2]:
+#            print(listaColumnas)
+#            print(listaFilas)
+            valoresColumnas = listaColumnas
+            x = np.arange(0, len(listaColumnas))
+#            print(x)
+#            print(datosOriginales)
+            xx1, yy1 = np.meshgrid(np.linspace(-1, len(x), 500), np.linspace(-1000, max_Y*2, 500)) 
+            textoInferior = listaFilas[0]
+        elif 'Anio' in listaFilas[0] and 'Mes' in listaFilas[1] or 'Ciudad' in listaFilas[1]  and 'Cantidad' in listaFilas[2] or 'Numero_Vuelos' in listaFilas[2]:
             if 'Mes' in listaFilas[1]:
                 x = np.arange(0, len(Constantes.Meses))
                 valoresColumnas = Constantes.Meses
             else: #Para ciudades/paises
                 x = np.arange(0, len(listaColumnas))
                 valoresColumnas = listaColumnas
-            xx1, yy1 = np.meshgrid(np.linspace(-1, len(x), 500), np.linspace(500, max_Y*2, 500)) 
+            xx1, yy1 = np.meshgrid(np.linspace(-1, len(x), 500), np.linspace(-10, max_Y*2, 500)) 
             textoInferior = listaFilas[1]
         return valoresColumnas, textoInferior, xx1, yy1, x
     
@@ -90,6 +105,7 @@ class Graphics():
     def showOutliersInliersEllipticEnvelope(self, datosOriginales, datosATestear, listaFilas, listaColumnas):
 
         valoresColumnas, textoInferior, xx1, yy1, x = self.inicializarDatosGrafica(listaFilas, listaColumnas, datosOriginales)
+                
     #   Obtenemos las fronteras de datos basandonos en los datos originales
         clf = EllipticEnvelope(contamination=Constantes.ContaminacionEllipticEnvelope)
         
@@ -117,6 +133,7 @@ class Graphics():
         inliers = plt.scatter(-13, -13)
         valores_originales = plt.scatter(datosOriginales[:, 0], datosOriginales[:, 1], color='black', label='Valores Originales')
 
+#        print(datosATestear)
         #   Iteramos los valores marcando en rojo los elementos que sean outliers y en verde los inliners
         for i in np.arange(0, len(resultadoValoresATestear)):
             if resultadoValoresATestear[i] == -1:
@@ -129,8 +146,8 @@ class Graphics():
     #   Definimos valores de la grafica
         plt.xlim((xx1.min(), xx1.max()))
         plt.ylim((yy1.min(), yy1.max()))
-        print(valoresColumnas)
-        print(x)
+#        print(valoresColumnas)
+#        print(x)
         pylab.xticks(x, valoresColumnas, size='small', rotation='vertical')
 #        plt.savefig('grafica.png')
         plt.ylabel("Cantidad")

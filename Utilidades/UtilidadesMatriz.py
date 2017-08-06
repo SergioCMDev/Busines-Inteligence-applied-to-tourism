@@ -193,7 +193,7 @@ class UtilidadesMatriz:
                 matriz, lista =  self.createMatrizCantidad(tuplas, columnas)
 
         elif  num_columns == 3:
-            if ('Mes' in columnas[0] or 'Anio' in columnas[0] or 'Ciudad_Origen' in columnas[0] or 'Ciudad_Destino' in columnas[0])  and  ('Pais' in columnas[1] or 'Pais_Origen' in columnas[1] or 'Mes' in columnas[1] or 'Ciudad_Origen' in columnas[1] or 'Ciudad_Destino' in columnas[1]) and ('Cantidad' in columnas[2] or 'Numero_Turistas' in columnas[2] or 'Numero_Vuelos' in columnas[2]):
+            if ('Mes' in columnas[0] or 'Anio' in columnas[0] or 'Ciudad_Origen' in columnas[0] or 'Ciudad_Destino' in columnas[0])  and  ('Pais' in columnas[1] or 'Pais_Origen' in columnas[1] or 'Mes' in columnas[1] or 'Ciudad_Origen' in columnas[1] or 'Ciudad' in columnas[1] or 'Ciudad_Destino' in columnas[1]) and ('Cantidad' in columnas[2] or 'Numero_Turistas' in columnas[2] or 'Numero_Vuelos' in columnas[2]):
                 matriz, lista =  self.createMatrizCantidad(tuplas, columnas)
                
         return matriz, lista

@@ -2868,17 +2868,10 @@ paths:
         format: "int64"
       - name: "AnioFin"
         in: "query"
-        description: "Año final de la matriz de datos"
+        description: "Año final de la matriz de datos, año desde el cual obtenemos los datos a probar"
         required: true
         type: "integer"
         default: 2014
-        format: "int64"
-      - name: "AnioAComprobar"
-        in: "query"
-        description: "Año a comprobar de la matriz de datos"
-        required: true
-        type: "integer"
-        default: 2015
         format: "int64"
       - name: "Metodo"
         in: "query"
@@ -2927,17 +2920,10 @@ paths:
         format: "int64"
       - name: "AnioFin"
         in: "query"
-        description: "Año final de la matriz de datos"
+        description: "Año final de la matriz de datos, a partir de este año comienan los datos de prueba"
         required: true
         type: "integer"
         default: 2014
-        format: "int64"
-      - name: "AnioAComprobar"
-        in: "query"
-        description: "Año a comprobar de la matriz de datos"
-        required: true
-        type: "integer"
-        default: 2015
         format: "int64"
       - name: "Metodo"
         in: "query"
@@ -3040,17 +3026,10 @@ paths:
         format: "int64"
       - name: "AnioFin"
         in: "query"
-        description: "Año final de la matriz de datos"
+        description: "Año final de la matriz de datos, año a partir del cual obtenemos los datos a probar"
         required: true
         type: "integer"
         default: 2014
-        format: "int64"
-      - name: "AnioAComprobar"
-        in: "query"
-        description: "Año a comprobar de la matriz de datos"
-        required: true
-        type: "integer"
-        default: 2015
         format: "int64"
       - name: "Metodo"
         in: "query"

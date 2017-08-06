@@ -17,18 +17,14 @@ class DeteccionOutliers:
     def ObtenerOutliersDadaMatrizAniosYTipo(self, matriz, DatoTrainInicio, DatoTrainFin, ValoresTest, listaLabels, Metodo):
 
         datosOriginales, datosATestear = self.setDataValues(matriz, DatoTrainInicio, DatoTrainFin, ValoresTest, listaLabels)
-        
-        
-        print(datosOriginales)
-        print("\n")
-        print(datosATestear)
-        
+#        print(datosOriginales)
+#        print("\n")
+#        print(datosATestear)
         if Metodo == "Elliptic":
             outliersValuesList, inliersValuesList =   self.obtenerOutliersInliersEllipticEnvelope(datosOriginales, datosATestear)
         elif Metodo == "Forest":
             outliersValuesList, inliersValuesList =   self.obtenerInliersOutliersIsolationForest(datosOriginales, datosATestear)
-        elif Metodo == "Covarianza":
-            outliersValuesList, inliersValuesList =   self.obtenerOutliersMinCovarianza(datosOriginales, datosATestear)
+
 
         return outliersValuesList, inliersValuesList
     
@@ -39,100 +35,87 @@ class DeteccionOutliers:
     #Inicalizacion datos para obtener outliers e inliers, otenemos valores originales y valores a testear
 #    def setDataValues(self, matriz, anioTrainInicio, AnioTrainFin, AnioTest, labels):
     def setDataValues(self, matriz, DatoTrainInicio, DatoTrainFin, ValoresTest, labels):
-        if 'Anio' in labels[0] and 'Pais' in labels[1] and 'Cantidad' in labels[2]:
+        if 'Anio' in labels[0] and 'Pais' in labels[1] or 'Mes' in labels[1] or 'Ciudad' in labels[1] and 'Cantidad' in labels[2]: ##Para Anios Mes Cantidad y Anios Pais Cantidad
 
             ##OBTENCION DATOS INICIALES
             numColumnas = len(matriz.loc[DatoTrainInicio])
-            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas, labels ) 
+            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas, labels) 
+            
             ####OBTENCION DATOS DE PRUEBA
             indices = np.arange(0, numColumnas, 1)
             indices = np.tile(indices, DatoTrainFin - DatoTrainInicio +1)
             datosOriginales = np.column_stack((indices, valoresDatosIniciales))
             tamanioIndices = len(matriz.loc[DatoTrainFin])                    
+
             indices = np.arange(0, tamanioIndices , 1)
             indices = np.tile(indices, len(ValoresTest))
 
-            valoresDatosTesting = utilidadesMatriz.GetValuesArrayIntegers(ValoresTest[0], ValoresTest[len(ValoresTest)-1], matriz, numColumnas, labels ) 
-
+            valoresDatosTesting = utilidadesMatriz.GetValuesArrayIntegers(ValoresTest[0], ValoresTest[len(ValoresTest)-1], matriz, numColumnas, labels) 
             datosATestear = np.column_stack((indices, valoresDatosTesting))
 
-            print(datosATestear)
            
             return datosOriginales, datosATestear
             #ARRIBA OK
-        elif  'Anio' in labels[0] or 'Mes' in labels[0] and 'Cantidad' in labels[1]:
+            
+        elif 'Mes' in labels[0] and 'Cantidad' in labels[1]: ##Para Anios Cantidad y Mes Cantidad #ANIOS CANTIDAD OK
+            
             numColumnas = 1
-            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas, labels ) 
-            if 'Mes' in labels[0]:
-                indices = np.arange(0, len(valoresDatosIniciales), 1)
-                print(indices)
-            else:
-                indices = np.arange(int(DatoTrainInicio), int(DatoTrainFin)+1, 1)
+            ##OBTENCION DATOS INICIALES
+            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas, labels) 
+            indices = np.arange(0, len(valoresDatosIniciales), 1)
+            
             
             datosOriginales = np.column_stack((indices, valoresDatosIniciales))
             
-            if len(ValoresTest) == 1: #Un solo Año ####PROBAR PARA HACERLO DE UNA SOLO FORMA USANDO EL ELSE
-                valorInicioTest = ValoresTest[0]
-                datosATestear = np.column_stack((valorInicioTest, matriz.loc[valorInicioTest]))
-            else: #Una lista de años
-                if 'Mes' in labels[0]:
-                    DatoTestInicio = ValoresTest[0]
-                    DatoTestFin = ValoresTest[len(ValoresTest)-1]
-                    indices = np.arange(len(valoresDatosIniciales), len(valoresDatosIniciales) + len(ValoresTest) , 1)
-
-                else:
-                    DatoTestInicio = int(ValoresTest[0])
-                    DatoTestFin = int(ValoresTest[len(ValoresTest)-1])
-                    indices = np.arange(int(DatoTestInicio), int(DatoTestFin)+1, 1)
+            ####OBTENCION DATOS DE PRUEBA
+            DatoTestInicio = ValoresTest[0]
+            DatoTestFin = ValoresTest[len(ValoresTest)-1]
+            indices = np.arange(len(valoresDatosIniciales), len(valoresDatosIniciales) + len(ValoresTest) , 1)
+            
                 
-                serieDataTestingAnios = utilidadesMatriz.GetValuesArrayIntegers(DatoTestInicio, DatoTestFin, matriz, numColumnas )
-                datosATestear = np.column_stack((indices, serieDataTestingAnios))
-
-
+            serieDataTestingAnios = utilidadesMatriz.GetValuesArrayIntegers(DatoTestInicio, DatoTestFin, matriz, numColumnas, labels)
+            datosATestear = np.column_stack((indices, serieDataTestingAnios))
                 
             return datosOriginales, datosATestear
-
-        elif 'Ciudad' in labels[0] or 'Pais' in labels[0] and 'Cantidad' in labels[1]:
+        elif  'Anio' in labels[0]  and 'Cantidad' in labels[1]: 
+            numColumnas = 1
+            ##OBTENCION DATOS INICIALES
+            valoresDatosIniciales = utilidadesMatriz.GetValuesArrayIntegers(DatoTrainInicio, DatoTrainFin, matriz, numColumnas, labels) 
+           
+            indices = np.arange(int(DatoTrainInicio), int(DatoTrainFin)+1, 1)
+            
+            datosOriginales = np.column_stack((indices, valoresDatosIniciales))
+            
+            ####OBTENCION DATOS DE PRUEBA
+     
+            DatoTestInicio = ValoresTest[0]
+            DatoTestFin = ValoresTest[len(ValoresTest)-1]
+            indices = np.arange(DatoTestInicio, DatoTestFin+1, 1)
+                
+            serieDataTestingAnios = utilidadesMatriz.GetValuesArrayIntegers(DatoTestInicio, DatoTestFin, matriz, numColumnas, labels)
+            datosATestear = np.column_stack((indices, serieDataTestingAnios))
+                
+            return datosOriginales, datosATestear
+            
+            
+            
+        elif 'Ciudad' in labels[0] or 'Pais' in labels[0] and 'Cantidad' in labels[1]: ##Para Ciudad Cantidad y Pais cantidad
             numColumnas = 1           
             valoresDatosIniciales = utilidadesMatriz.GetValuesArrayStrings(DatoTrainInicio, DatoTrainFin, matriz, numColumnas)
-#            print(matriz.loc[DatoTrainInicio : DatoTrainFin]["Cantidad"])
+
             indices = np.arange(0, len(valoresDatosIniciales), 1)
 
             datosOriginales = np.column_stack((indices, valoresDatosIniciales))
 
-            if len(ValoresTest) == 1: #Un solo valor de testeo
-                ciudadTest = ValoresTest[0]
-                datosATestear = np.column_stack((len(valoresDatosIniciales), matriz.loc[ciudadTest]))
-#    
-            else: #Una lista de valores de testeo
-                DatoTestInicio = ValoresTest[0]
-                DatoTestFin = ValoresTest[len(ValoresTest)-1]
 
-                indices = np.arange(len(valoresDatosIniciales), len(valoresDatosIniciales) + len(ValoresTest), 1)
-                print(indices)
-                serieDataTestingAnios = utilidadesMatriz.GetValuesArrayStrings(DatoTestInicio, DatoTestFin, matriz, numColumnas )
 
-                datosATestear = np.column_stack((indices, serieDataTestingAnios))
+            DatoTestInicio = ValoresTest[0]
+            DatoTestFin = ValoresTest[len(ValoresTest)-1]
+            indices = np.arange(len(valoresDatosIniciales), len(valoresDatosIniciales) + len(ValoresTest), 1)
+            serieDataTestingAnios = utilidadesMatriz.GetValuesArrayStrings(DatoTestInicio, DatoTestFin, matriz, numColumnas )
+            datosATestear = np.column_stack((indices, serieDataTestingAnios))
             
-            return datosOriginales, datosATestear
-
-# TODO
-#        elif 'Anio' in labels[0] and 'Mes' in labels[1]  and 'Cantidad' in labels[2] or 'Numero_Vuelos' in labels[2]: 
-#            if 'Mes' in labels[1]:
-#                numColumnas = 12 #Debido a que son 12 meses
-#            else:
-#                numColumnas = 21
-#                
-#            serieDataAnios = utilidadesMatriz.GetValuesArrayIntegers(anioTrainInicio, AnioTrainFin, matriz, numColumnas )
-#            indices = np.arange(0, numColumnas,1)
-#            indices = np.tile(indices, AnioTrainFin - anioTrainInicio +1)
-#
-#
-#            datosOriginales = np.column_stack((indices, serieDataAnios))
-#            datosATestear = np.column_stack((np.arange(0,numColumnas,1), matriz.loc[AnioTest]))
-#
-#            return datosOriginales, datosATestear
-#        
+            return datosOriginales, datosATestear       
         
         
         

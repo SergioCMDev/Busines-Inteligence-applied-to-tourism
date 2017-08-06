@@ -36,15 +36,30 @@ class Conversores:
     def separarValoresBody(self, body, ValorFin):
         iniciales = True
         listaValores = list()
+        listaValoresCentrales = list()
+
         listaValoresAComprobar = list()
         buffer = 0
         for item in body:
                     #TODO IR INCREMENTANDO
-                if(hasattr(item, 'anio') and hasattr(item, 'pais') and hasattr(item, 'cantidad')):
+                if(hasattr(item, 'anio') and hasattr(item, 'pais')  and hasattr(item, 'cantidad')):
                     tupla = (item.anio, item.pais, item.cantidad)
+                    if item.pais not in listaValoresCentrales:
+                        listaValoresCentrales.append(item.pais)
                     valorItem = item.anio
                     buffer = 1
+                elif(hasattr(item, 'anio') and hasattr(item, 'mes')  and hasattr(item, 'cantidad')):
+                    tupla = (item.anio, item.mes, item.cantidad)
+                    valorItem = item.anio
+                    buffer = 1
+                elif(hasattr(item, 'anio') and hasattr(item, 'ciudad')  and hasattr(item, 'cantidad')):
+                    tupla = (item.anio, item.ciudad, item.cantidad)
+                    valorItem = item.anio
+                    if item.ciudad not in listaValoresCentrales:
+                        listaValoresCentrales.append(item.ciudad)
+                    buffer = 1
                 elif(hasattr(item, 'anio') and hasattr(item, 'cantidad')):
+                    print('ff')
                     tupla = (item.anio, item.cantidad)
                     valorItem = item.anio
                 elif (hasattr(item, 'ciudad') and hasattr(item, 'cantidad')):
@@ -65,10 +80,14 @@ class Conversores:
                     if(valorItem not in listaValoresAComprobar):
                         listaValoresAComprobar.append(valorItem)    
     
-                if valorItem == ValorFin + buffer:
-                     iniciales = False
-                        
-        return listaValores, listaValoresAComprobar
+                if type(ValorFin) == int:
+                    ValorFin = ValorFin + buffer
+                if valorItem == ValorFin:
+                    iniciales = False
+                if type(ValorFin) == int:
+                    ValorFin = ValorFin - buffer
+
+        return listaValores, listaValoresAComprobar, listaValoresCentrales
     
     
     
