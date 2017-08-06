@@ -47,16 +47,17 @@ def obtener_outliers_ciudad_cantidad(ciudadInicioIniciales, CiudadFinIniciales, 
 #        print("\n")
 #        print(listaColumnas)
         
-        outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, ciudadInicioIniciales, CiudadFinIniciales, listaValoresAComprobar, listaLabels, Metodo)
-#        print(outliersValuesList)
+        listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, ciudadInicioIniciales, CiudadFinIniciales, listaValoresAComprobar, listaLabels, Metodo)
+#        print(listaValoresOutliers)
 #        print("\n")
-#        print(inliersValuesList)
+#        print(listaValoresInliers)
     
-        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, ciudadInicioIniciales, CiudadFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
-        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, ciudadInicioIniciales, CiudadFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
+#        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, ciudadInicioIniciales, CiudadFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
+#        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, ciudadInicioIniciales, CiudadFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
+        return conversor.ObtenerJSONDeListasOutliersInliers(listaValoresInliers, listaValoresOutliers, listaLabels, listaValoresCentrales)
         #OK
 
-#TODO METODO PARA DEVOLVER OUTLIERS EN JSON
+
 
 
 
@@ -90,31 +91,23 @@ def obtener_outliers_inliers_anios_cantidad(AnioInicio, AnioFin, Metodo,  body):
         listaValores, listaValoresAComprobar, listaValoresCentrales = conversor.separarValoresBody(body, AnioFin)
 
 
-        print(listaValoresAComprobar)
+#        print(listaValoresAComprobar)
         matriz, listaColumnas =  conversor.ConvertirTuplasToMatriz(listaValores, listaLabels)
-        print(matriz)
-        outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
-#        print(outliersValuesList)
-#        print("\n")
-#        print(inliersValuesList)
+#        print(matriz)
+        listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
         
         outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaColumnas)
-        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaColumnas)
+
+
+        return conversor.ObtenerJSONDeListasOutliersInliers(listaValoresInliers, listaValoresOutliers, listaLabels, listaValoresCentrales)
+
+
+        
+#        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaColumnas)
+#        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaColumnas)
 #OK
 
-#TODO METODO PARA DEVOLVER OUTLIERS EN JSON
-#        if(len(inliersValues) > 0 and len(outliersValues) > 0):
-#            inliersJSON = conversor.convertirNumpyArrayAJson(inliersValues)
-#            outliersJSON = conversor.convertirNumpyArrayAJson(outliersValues)
-#            text = 'Outliers '+ str(outliersJSON) + ' Inliers ' + str(inliersJSON)
-#        elif(len(inliersValues) > 0 and len(outliersValues) == 0):
-#            inliersJSON = conversor.convertirNumpyArrayAJson(inliersValues)
-#            text = 'Inliers ' + str(inliersJSON)
-#        elif(len(inliersValues) == 0 and len(outliersValues > 0)):
-#            outliersJSON = conversor.convertirNumpyArrayAJson(outliersValues)
-#            text = " Outliers "+ str(outliersJSON)
-#        return text
-#
+
 def obtener_outliers_pais_cantidad(PaisInicioIniciales, PaisFinIniciales, Metodo, body): #OK
     """
     Obtener los valores fuera de lo comun dado unos valores iniciales  y unos valores a tratar
@@ -138,18 +131,18 @@ def obtener_outliers_pais_cantidad(PaisInicioIniciales, PaisFinIniciales, Metodo
         listaValores, listaValoresAComprobar, listaValoresCentrales = conversor.separarValoresBody(body, PaisFinIniciales)
         matriz, listaColumnas =  conversor.ConvertirTuplasToMatriz(listaValores, listaLabels)
 
-        outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, PaisInicioIniciales, PaisFinIniciales, listaValoresAComprobar, listaLabels, Metodo)
-#        print(outliersValuesList)
+        listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, PaisInicioIniciales, PaisFinIniciales, listaValoresAComprobar, listaLabels, Metodo)
+#        print(listaValoresOutliers)
 #        print("\n")
-#        print(inliersValuesList)
+#        print(listaValoresInliers)
 
         outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, PaisInicioIniciales, PaisFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
         outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, PaisInicioIniciales, PaisFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
-    #TODO METODO PARA DEVOLVER OUTLIERS EN JSON
 
             
-    return 'do some magic!'
-        
+        return conversor.ObtenerJSONDeListasOutliersInliers(listaValoresInliers, listaValoresOutliers, listaLabels, listaValoresCentrales)
+       #OK
+ 
         
 def obtener_outliers_inliers_mes_cantidad(MesInicioIniciales, MesFinIniciales, Metodo, body): #OK
     """
@@ -174,15 +167,15 @@ def obtener_outliers_inliers_mes_cantidad(MesInicioIniciales, MesFinIniciales, M
         listaValores, listaValoresAComprobar, listaValoresCentrales = conversor.separarValoresBody(body, MesFinIniciales)
         matriz, listaColumnas =  conversor.ConvertirTuplasToMatriz(listaValores, listaLabels)
        
-        outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, MesInicioIniciales, MesFinIniciales, listaValoresAComprobar, listaLabels, Metodo)
-#        print(outliersValuesList)
+        listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, MesInicioIniciales, MesFinIniciales, listaValoresAComprobar, listaLabels, Metodo)
+#        print(listaValoresOutliers)
 #        print("\n")
-#        print(inliersValuesList)    
-        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, MesInicioIniciales, MesFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
-        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, MesInicioIniciales, MesFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
+#        print(listaValoresInliers)    
+#        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, MesInicioIniciales, MesFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
+#        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, MesInicioIniciales, MesFinIniciales, listaValoresAComprobar, listaLabels, listaColumnas)
+        return conversor.ObtenerJSONDeListasOutliersInliers(listaValoresInliers, listaValoresOutliers, listaLabels, listaValoresCentrales)
 #        OK
-#    #TODO METODO PARA DEVOLVER OUTLIERS EN JSON
-#        return 'do some magic!'
+
 
 
 
@@ -215,14 +208,15 @@ def obtener_outliers_inliers_anios_pais_cantidad(AnioInicio, AnioFin, Metodo, bo
 #        print("\n")
 #        print(listaValoresCentrales)
         matriz, listaColumnas =  conversor.ConvertirTuplasToMatriz(listaValores, listaLabels)
-        outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
+        listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
 #        print(listaColumnas)
-#        print(outliersValuesList)
-#        print("\n")
-#        print(inliersValuesList)            
-        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
-        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
-#    #TODO METODO PARA DEVOLVER OUTLIERS EN JSON    return 'do some magic!'
+        print(listaValoresOutliers)
+        print("\n")
+        print(listaValoresInliers)         
+#        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
+#        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
+        return conversor.ObtenerJSONDeListasOutliersInliers(listaValoresInliers, listaValoresOutliers, listaLabels, listaValoresCentrales)
+#        OK
 
 
 
@@ -250,19 +244,19 @@ def obtener_outliers_inliers_anios_mes_cantidad(AnioInicio, AnioFin, Metodo,  bo
 
         matriz, listaColumnas =  conversor.ConvertirTuplasToMatriz(listaValores, listaLabels)
 #        print(matriz)
-        outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
+        listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
 
-#        print(outliersValuesList)
-#        print(inliersValuesList)
+        print(listaValoresOutliers)
+        print("\n")
+
+        print(listaValoresInliers)
 #        
         outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin,listaValoresAComprobar, listaLabels, listaColumnas)
         outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin,listaValoresAComprobar, listaLabels, listaColumnas)
+
+        return conversor.ObtenerJSONDeListasOutliersInliers(listaValoresInliers, listaValoresOutliers, listaLabels, listaValoresCentrales)
         #OK
 
-#    #TODO METODO PARA DEVOLVER OUTLIERS EN JSON    return 'do some magic!'
-
-
-##TODO
 def obtener_outliers_inliers_anios_ciudad_cantidad(AnioInicio, AnioFin, Metodo,  body): 
     """
     Obtener los valores fuera de lo comun dado unos valores iniciales  y unos valores a tratar
@@ -280,7 +274,7 @@ def obtener_outliers_inliers_anios_ciudad_cantidad(AnioInicio, AnioFin, Metodo, 
     """
     if connexion.request.is_json:
         body = [Body3.from_dict(d) for d in connexion.request.get_json()]
-        print(body)
+#        print(body)
         listaLabels = list()
         listaLabels.append('Anio')
         listaLabels.append('Ciudad')
@@ -294,18 +288,22 @@ def obtener_outliers_inliers_anios_ciudad_cantidad(AnioInicio, AnioFin, Metodo, 
 #OK
         matriz, listaColumnas =  conversor.ConvertirTuplasToMatriz(listaValores, listaLabels)
 #        print(listaColumnas)
-        outliersValuesList, inliersValuesList = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
+        listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
         
-#        print(outliersValuesList)
+#        print(listaValoresOutliers)
 #        print("\n")
-#        print(inliersValuesList)
+#        print(listaValoresInliers)
             
             #TODO REALIZAR AMBAS GRAFICAS
-        print(listaColumnas)
-        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
-        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
-    
-        return 'do some magic!'
+#        print(listaColumnas)
+#        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
+#        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
+#        print(listaValoresOutliers)
+#        print(listaValoresCentrales)
+
+
+        return conversor.ObtenerJSONDeListasOutliersInliers(listaValoresInliers, listaValoresOutliers, listaLabels, listaValoresCentrales)
+        #OK
 
 """
     Probar en postman con entrada [{"Anio": 2009,"Cantidad": 46453}, {"Anio": 2010,"Cantidad": 44721}, {"Anio": 2011,"Cantidad": 61420}]

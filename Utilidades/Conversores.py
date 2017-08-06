@@ -8,6 +8,8 @@ from decimal import Decimal
 import json
 from pandas import DataFrame
 from ..Utilidades.UtilidadesMatriz import UtilidadesMatriz as UtilidadesMatriz
+from ..Utilidades.Constantes import Constantes
+
 matrix = UtilidadesMatriz()
 import numpy
 import base64
@@ -51,6 +53,7 @@ class Conversores:
                 elif(hasattr(item, 'anio') and hasattr(item, 'mes')  and hasattr(item, 'cantidad')):
                     tupla = (item.anio, item.mes, item.cantidad)
                     valorItem = item.anio
+                    listaValoresCentrales = Constantes.Meses
                     buffer = 1
                 elif(hasattr(item, 'anio') and hasattr(item, 'ciudad')  and hasattr(item, 'cantidad')):
                     tupla = (item.anio, item.ciudad, item.cantidad)
@@ -59,17 +62,22 @@ class Conversores:
                         listaValoresCentrales.append(item.ciudad)
                     buffer = 1
                 elif(hasattr(item, 'anio') and hasattr(item, 'cantidad')):
-                    print('ff')
                     tupla = (item.anio, item.cantidad)
                     valorItem = item.anio
                 elif (hasattr(item, 'ciudad') and hasattr(item, 'cantidad')):
                     tupla = (item.ciudad, item.cantidad)
+                    if item.ciudad not in listaValoresCentrales:
+                        listaValoresCentrales.append(item.ciudad)
                     valorItem = item.ciudad
                 elif (hasattr(item, 'pais') and hasattr(item, 'cantidad')):
                     tupla = (item.pais, item.cantidad)
+                    if item.pais not in listaValoresCentrales:
+                        listaValoresCentrales.append(item.pais)
                     valorItem = item.pais
                 elif (hasattr(item, 'mes') and hasattr(item, 'cantidad')):
                     tupla = (item.mes, item.cantidad)
+                    listaValoresCentrales = Constantes.Meses
+
                     valorItem = item.mes
                     
                     
@@ -89,7 +97,52 @@ class Conversores:
 
         return listaValores, listaValoresAComprobar, listaValoresCentrales
     
-    
+    ##Dadas las listas de outliers e inliers y la lista de columnas de la matriz y los valores centrales (para cuando hay tres columnas)
+    def ObtenerJSONDeListasOutliersInliers(self, ValoresInliers, ValoresOutliers, listaLabels, listaValoresCentrales):
+        print(listaValoresCentrales)
+        if len(ValoresOutliers) > 0:
+            text = '{"Outliers":['
+            for outlier in ValoresOutliers:
+                if len(listaLabels) == 3:
+                    valorItem = listaLabels[1]
+                    item = str(listaValoresCentrales[outlier[0]])
+                elif len(listaLabels) == 2  :
+                    if( ('Ciudad' in listaLabels[0]  or 'Pais' in listaLabels[0] or 'Mes' in listaLabels[0]) ):
+                        valorItem = listaLabels[0]
+                        item = str(listaValoresCentrales[outlier[0]])
+                    else:
+                        valorItem = listaLabels[0]
+                        item = str(outlier[0])
+                text = text +'{ "'+valorItem+'":' + item  +'},'
+            text = text[:-1]
+            text = text +']}'
+        if len(ValoresInliers) > 0:
+            print('dd')
+            if len(ValoresOutliers) > 0:    
+                text = text[:-1]
+                comilla = ','
+            else:
+                text= "{"
+                comilla = ''
+                
+            text = text + comilla +'"Inliers":['
+
+            for inlier in ValoresInliers:
+                if len(listaLabels) == 3:
+                    valorItem = listaLabels[1]
+                    item = str(listaValoresCentrales[inlier[0]])
+                elif len(listaLabels) == 2:
+                    if( ('Ciudad' in listaLabels[0]  or 'Pais' in listaLabels[0] or 'Mes' in listaLabels[0]) ):
+                        valorItem = listaLabels[0]
+                        item = str(listaValoresCentrales[inlier[0]])
+                    else:
+                        valorItem = listaLabels[0]
+                        item = str(inlier[0])
+                text = text +'{ "'+valorItem+'": ' + item  +'},'
+            text = text[:-1]
+            text = text +']}'
+
+        return text
     
     def ObtenerDataJSONExtendido(self, matriz):
         #    print(matriz)

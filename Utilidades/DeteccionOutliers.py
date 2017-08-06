@@ -179,6 +179,7 @@ class DeteccionOutliers:
         listaOutliers = list()
         #   Iteramos los valores almacenando los outliers y los inliers
         for i in np.arange(0, len(resultadoValoresATestear)):
+#            print(datosATestear[i])
             if resultadoValoresATestear[i] == -1:
                 listaOutliers.append(datosATestear[i])
             else:
