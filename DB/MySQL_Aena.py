@@ -45,6 +45,73 @@ class MySQLAccessAena:
         #####################################VUELOS ENTRANTES###############################################################################
         #############################################################################################################################################################################################################################################
 
+############################################################################################################################
+##############################################################PROBAR##############################################################
+############################################################################################################################
+    #Muestra los paises de origen y el mumero de vuelos entrantes que se realizan en anio en PaisDestino
+    def ObtenerPaisOrigenYVuelosEntrantesAenaDadoPaisDestinoAnio(self, PaisDestino, Anio): #PROBAR
+        
+        self.cursor = self.connection.cursor()
+        self.query = "SELECT country_origen.name as Pais_Origen, SUM(av.flights) as Numero_Vuelos from aena_vuelos av JOIN airport ap_destino on av.destination_id = ap_destino.id JOIN country country_destino on ap_destino.country_id = country_destino.id JOIN airport ap_origen on av.origin_id = ap_origen.id JOIN country country_origen on ap_origen.country_id = country_origen.id Where country_destino.name = %s AND YEAR(av.date) = %s GROUP BY country_origen.name"
+        self.cursor.execute(self.query,(PaisDestino, Anio))  
+        return self.cursor
+
+    #Muestra los paises de origen y el mumero de vuelos entrantes que se realizan en anio en PaisDestino hacia la ciudad Destino
+    def ObtenerPaisOrigenYVuelosEntrantesAenaDadoPaisDestinoCiudadDestinoAnio(self, PaisDestino, ciudadDestino, Anio): #PROBAR
+        
+        self.cursor = self.connection.cursor()
+        self.query = "SELECT country_origen.name as Pais_Origen, SUM(av.flights) as Numero_Vuelos from aena_vuelos av JOIN airport ap_destino on av.destination_id = ap_destino.id JOIN country country_destino on ap_destino.country_id = country_destino.id JOIN city city_destino on city_destino.country_id = country_destino.id JOIN airport ap_origen on av.origin_id = ap_origen.id JOIN country country_origen on ap_origen.country_id = country_origen.id Where country_destino.name = %s AND city_destino.name = %s AND YEAR(av.date) = %s GROUP BY country_origen.name"
+        self.cursor.execute(self.query,(PaisDestino, ciudadDestino, Anio))  
+        return self.cursor
+
+
+ #Muestra los paises de origen y el mumero de vuelos entrantes que se realizan entre AnioInicio y AnioFin en PaisDestino de forma mensual
+    def ObtenerPaisesOrigenYVuelosEntrantesMensualmenteDuranteAniosAenaDadoPaisDestinoAnio(self, PaisDestino, Anio): #PROBAR
+        
+        self.cursor = self.connection.cursor()
+        self.query = "SELECT MONTH(av.date), country_origen.name as Pais_Origen, SUM(av.flights) as Numero_Vuelos from aena_vuelos  av JOIN airport ap_destino on av.destination_id = ap_destino.id JOIN country country_destino on ap_destino.country_id = country_destino.id JOIN airport ap_origen on av.origin_id = ap_origen.id JOIN country country_origen on ap_origen.country_id = country_origen.id Where country_destino.name = %s AND YEAR(av.date) = %s GROUP BY MONTH(av.date), country_origen.name"
+        self.cursor.execute(self.query,(PaisDestino, Anio))  
+        return self.cursor
+
+
+
+    #Muestra los paises de origen y el mumero de vuelos entrantes que se realizan entre AnioInicio y AnioFin en PaisDestino
+    def ObtenerPaisesOrigenYVuelosEntrantesDuranteAniosAenaDadoPaisDestinoAnioMinMax(self, PaisDestino, MinYear, MaxYear): #PROBAR
+        
+        self.cursor = self.connection.cursor()
+        self.query = "SELECT YEAR(av.date) as Anio, country_origen.name as Pais_Origen, SUM(av.flights) as Numero_Vuelos from aena_vuelos av JOIN airport ap_destino on av.destination_id = ap_destino.id JOIN country country_destino on ap_destino.country_id = country_destino.id JOIN airport ap_origen on av.origin_id = ap_origen.id JOIN country country_origen on ap_origen.country_id = country_origen.id Where country_destino.name = %s AND YEAR(av.date) >= %s AND YEAR(av.date) <= %s GROUP BY YEAR(av.date), country_origen.name"
+        self.cursor.execute(self.query,(PaisDestino, MinYear, MaxYear ))  
+        return self.cursor
+
+
+
+    ##Dado un pais destino y un rango de años devuelve los paises desde donde se viaja a pais destino con sus ciudades y el numero de vuelos
+    def ObtenerPaisesOrigenCiudadesOrigenYVuelosEntrantesDuranteAnioAenaDadoPaisDestinoAnio(self, PaisDestino, Anio): #PROBAR
+        
+        self.cursor = self.connection.cursor()
+        self.query = "SELECT country_origen.name as Pais_Origen, city_origen.name AS Ciudad_Origen, SUM(av.flights) as Numero_Vuelos from aena_vuelos av JOIN airport ap_destino on av.destination_id = ap_destino.id JOIN country country_destino on ap_destino.country_id = country_destino.id JOIN airport ap_origen on av.origin_id = ap_origen.id JOIN country country_origen on ap_origen.country_id = country_origen.id JOIN city city_origen ON country_origen.id = city_origen.country_id Where country_destino.name = %s AND YEAR(av.date) = %s GROUP BY country_origen.name, city_origen.name"
+        self.cursor.execute(self.query,(PaisDestino, Anio))  
+        return self.cursor
+
+
+    ##Dado un pais destino y un rango de años devuelve los paises desde donde se viaja a pais destino con sus ciudades y el numero de vuelos
+    def ObtenerPaisesOrigenCiudadesOrigenYVuelosEntrantesAnualmenteAenaDadoPaisDestinoAnioMinMax(self, PaisDestino, MinYear, MaxYear): #PROBAR
+        self.cursor = self.connection.cursor()
+        self.query = "SELECT YEAR(av.date) AS Anio, country_origen.name as Pais_Origen, city_origen.name AS Ciudad_Origen, SUM(av.flights) as Numero_Vuelos from aena_vuelos av JOIN airport ap_destino on av.destination_id = ap_destino.id JOIN country country_destino on ap_destino.country_id = country_destino.id JOIN airport ap_origen on av.origin_id = ap_origen.id JOIN country country_origen on ap_origen.country_id = country_origen.id JOIN city city_origen ON country_origen.id = city_origen.country_id Where country_destino.name = %s AND YEAR(av.date) >= %s AND YEAR(av.date) <= %s GROUP BY country_origen.name, city_origen.name"
+        self.cursor.execute(self.query,(PaisDestino, MinYear, MaxYear ))  
+        return self.cursor
+
+    def ObtenerPaisesOrigenCiudadesOrigenYVuelosEntrantesAnualmenteAenaDadoPaisDestinoMesAnioMinMax(self, PaisDestino, Mes, MinYear, MaxYear): #PROBAR
+        self.cursor = self.connection.cursor()
+        self.query = "SELECT YEAR(av.date) as Anio, country_origen.name as Pais_Origen, SUM(av.flights) as Numero_Vuelos from aena_vuelos av JOIN airport ap_destino on av.destination_id = ap_destino.id JOIN country country_destino on ap_destino.country_id = country_destino.id JOIN airport ap_origen on av.origin_id = ap_origen.id JOIN country country_origen on ap_origen.country_id = country_origen.id Where country_destino.name = %s AND MONTH(av.date) = %s AND YEAR(av.date) >= %s AND YEAR(av.date) <= %s  GROUP BY YEAR(av.date), country_origen.name"
+        self.cursor.execute(self.query,(PaisDestino, Mes, MinYear, MaxYear ))  
+        return self.cursor
+
+
+############################################################################################################################
+    #################################################################DONE############################################################################################################################
+##########################################################################################################################################################################################
+
     #Muestra el mumero de vuelos entrantes en PaisDestino entre MinYear y MaxYear
     def ObtenerDatosVuelosEntrantesAenaDadoPaisDestinoAnioMinMax(self, PaisDestino, MinYear, MaxYear): #OK
         
