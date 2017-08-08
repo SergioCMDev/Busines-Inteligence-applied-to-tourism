@@ -2,6 +2,9 @@ from ..DB.DBRepositoryAena import DBRepositoryAena as DBRepository
 from ..Utilidades.Conversores import Conversores as Conversor
 
 
+
+
+
 def obtener_cantidad_ciudad_anualmente_mensualmente(PaisOrigen, CiudadOrigen, Anio):
     """
     Obtiene la cantidad de vuelos salientes en una ciudad de un pais durante un año de forma mensual
@@ -18,10 +21,9 @@ def obtener_cantidad_ciudad_anualmente_mensualmente(PaisOrigen, CiudadOrigen, An
     conversor = Conversor()
     repository = DBRepository()
 
-    cursor, labels = repository.ObtenerCantidadVuelosAenaSalientesMensualmenteDadoPaisOrigenCiudadDestinoAnio(PaisOrigen, CiudadOrigen, Anio)
+    cursor, labels = repository.ObtenerCantidadVuelosAenaSalientesMensualmenteDadoPaisOrigenCiudadOrigenAnio(PaisOrigen, CiudadOrigen, Anio)
 
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
-    print(arrayTuplas)
 
     ##Mostrar JSON Extendido
     matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
@@ -32,12 +34,58 @@ def obtener_cantidad_ciudad_anualmente_mensualmente(PaisOrigen, CiudadOrigen, An
     ##Mostrar JSON Reducido
 #    retval = conversor.convertirAJson(arrayTuplas)
 #    return retval
+    
+    
+    
+#TODO Hacer
+def obtener_cantidad_ciudades_destino_por_meses_desde_pais_origen_en_rango_anios(PaisOrigen, AnioInicio, AnioFin):
+    """
+    Obtiene la cantidad de vuelos salientes de un pais mostrando paises destino, ciudades destino, mes y numero vuelos durante un rango de años
+    Obtiene la cantidad de vuelos salientes de un pais mostrando paises destino, ciudades destino, mes y numero vuelos durante un rango de años
+    :param PaisOrigen: Pais del que salen los vuelos
+    :type PaisOrigen: str
+    :param AnioInicio: Anio Inicio
+    :type AnioInicio: int
+    :param AnioFin: Anio Fin
+    :type AnioFin: int
 
+    :rtype: None
+    """
+    return 'do some magic!'
+    
+#TODO Hacer
+def obtener_cantidad_ciudades_destino_mensual_desde_pais_origen_en_anio(PaisOrigen, Anio):
+    """
+    Obtiene la cantidad de vuelos salientes de un pais mostrando paises destino, ciudades destino y numero vuelos durante un año
+    Obtiene la cantidad de vuelos salientes de un pais mostrando paises destino, ciudades destino, mes y numero vuelos
+    :param PaisOrigen: Pais del que salen los vuelos
+    :type PaisOrigen: str
+    :param Anio: Anio
+    :type Anio: int
+
+    :rtype: None
+    """
+    return 'do some magic!'
+    
+    
+#TODO Hacer
+def obtener_cantidad_ciudad_destino_desde_pais_origen(PaisOrigen, ciudadDestino):
+    """
+    Obtiene la cantidad de vuelos salientes de un pais mostrando paises destino, ciudades destino y numero vuelos durante un año
+    Obtiene la cantidad de vuelos salientes de un pais mostrando paises destino, ciudades destino, mes y numero vuelos
+    :param PaisOrigen: Pais del que salen los vuelos
+    :type PaisOrigen: str
+    :param ciudadDestino: Ciudad a la que llegan los vuelos
+    :type ciudadDestino: str
+
+    :rtype: None
+    """
+    return 'do some magic!'
 
 def obtener_cantidad_ciudad_mensualmente(PaisOrigen, PaisDestino, CiudadDestino, AnioInicio, AnioFin):
     """
-    Obtiene la cantidad de vuelos salientes de desde un pais hacia una ciudad destino durante un rango de años y lo organizamos mensualmente
-    Obtiene la cantidad de vuelos salientes de desde un pais hacia una ciudad destino durante un rango de años
+    Obtiene la cantidad de vuelos salientes desde un pais hacia una ciudad destino durante un rango de años y lo organizamos mensualmente
+    Obtiene la cantidad de vuelos salientes desde un pais hacia una ciudad destino durante un rango de años
     :param PaisOrigen: Pais del que salen los vuelos
     :type PaisOrigen: str
     :param PaisDestino: Pais Destino
@@ -99,6 +147,23 @@ def obtener_cantidad_ciudades_durante_un_mes_en_rango_anios(PaisOrigen, Mes, Ani
     return retval
 
 
+#TODO Hacer
+def obtener_cantidad_pais_origen_en_rango_anios(PaisOrigen, AnioInicio, AnioFin):
+    """
+    Obtiene la cantidad de vuelos salientes de un pais mostrando paises destino, ciudades destino y numero vuelos durante un rango de años
+    Obtiene la cantidad de vuelos salientes de un pais mostrando paises destino, ciudades destino y numero vuelos durante un rango de años
+    :param PaisOrigen: Pais del que salen los vuelos
+    :type PaisOrigen: str
+    :param AnioInicio: Anio Inicio
+    :type AnioInicio: int
+    :param AnioFin: Anio Fin
+    :type AnioFin: int
+
+    :rtype: None
+    """
+    return 'do some magic!'
+
+
 
 def obtener_cantidad_ciudades_en_anio(PaisOrigen, Anio):
     """
@@ -157,8 +222,9 @@ def obtener_cantidad_entrantes_ciudad(PaisOrigen, CiudadDestino, Anio):
 #    retval = conversor.convertirAJson(arrayTuplas)
 #    return retval
 
-
-
+#TODO
+#def ObtenerCantidadPaisOrigenEnRangoAnios(PaisOrigen, AnioInicio, AnioFin):
+#    print(1)
 
 
 
