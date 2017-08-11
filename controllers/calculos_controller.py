@@ -6,6 +6,7 @@ from swagger_server.models.body3 import Body3
 from swagger_server.models.body4 import Body4
 from swagger_server.models.body5 import Body5
 from swagger_server.models.body6 import Body6
+from swagger_server.models.body7 import Body7
 
 from ..Utilidades.UtilidadesTensorFlow import UtilidadesTensorFlow as Tensorflow
 tensorflow = Tensorflow()
@@ -210,9 +211,9 @@ def obtener_outliers_inliers_anios_pais_cantidad(AnioInicio, AnioFin, Metodo, bo
         matriz, listaColumnas =  conversor.ConvertirTuplasToMatriz(listaValores, listaLabels)
         listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
 #        print(listaColumnas)
-        print(listaValoresOutliers)
-        print("\n")
-        print(listaValoresInliers)         
+#        print(listaValoresOutliers)
+#        print("\n")
+#        print(listaValoresInliers)         
 #        outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
 #        outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, listaValoresCentrales)
         return conversor.ObtenerJSONDeListasOutliersInliers(listaValoresInliers, listaValoresOutliers, listaLabels, listaValoresCentrales)
@@ -246,10 +247,10 @@ def obtener_outliers_inliers_anios_mes_cantidad(AnioInicio, AnioFin, Metodo,  bo
 #        print(matriz)
         listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, AnioInicio, AnioFin, listaValoresAComprobar, listaLabels, Metodo)
 
-        print(listaValoresOutliers)
-        print("\n")
-
-        print(listaValoresInliers)
+#        print(listaValoresOutliers)
+#        print("\n")
+#
+#        print(listaValoresInliers)
 #        
         outliers.MostrarOutliersMedianteEnvolturaElipticaDadosDatos(matriz, AnioInicio, AnioFin,listaValoresAComprobar, listaLabels, listaColumnas)
         outliers.MostrarOutliersMedianteIsolationForestDadosDatos(matriz, AnioInicio, AnioFin,listaValoresAComprobar, listaLabels, listaColumnas)
@@ -323,21 +324,14 @@ def obtener_progresion_lineal(AnioPrediccion, body):
     """
     prediccionCantidad = -1
     if connexion.request.is_json:
-        body = [Body.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body7.from_dict(d) for d in connexion.request.get_json()]
         lista = list()
         
         print(body)
         for item in body:
-            if(hasattr(item, 'Anio') and hasattr(item, 'Cantidad')):
-                tupla = (item.Anio, item.Cantidad)
-            elif (hasattr(item, 'Anio') and hasattr(item, 'Numero_Turistas')):
-                tupla = (item.Anio, item.Numero_Turistas)
-            elif (hasattr(item, 'Anio') and hasattr(item, 'Numero_Vuelos')):
-                tupla = (item.Anio, item.Numero_Vuelos)
-            else:
-                tupla = None
+            if(hasattr(item, 'anio') and hasattr(item, 'cantidad')):
+                tupla = (item.anio, item.cantidad)
             lista.append(tupla)
-
         prediccionCantidad = tensorflow.ObtenerProgresionLineal(lista, int(AnioPrediccion))
 
     return int(prediccionCantidad)

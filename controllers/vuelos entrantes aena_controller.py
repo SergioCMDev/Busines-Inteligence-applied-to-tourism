@@ -1,4 +1,4 @@
-from ..DB.DBRepositoryAena import DBRepositoryAena as DBRepository
+from ..DB.Repositorio_Vuelos_Entrantes_Aena import RepositoryVuelosEntrantesAena as DBRepository
 from ..Utilidades.Conversores import Conversores as Conversor
 
 

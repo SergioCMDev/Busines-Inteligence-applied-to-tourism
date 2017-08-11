@@ -1,4 +1,4 @@
-from ..DB.DBRepositoryAmadeus import DBRepositoryAmadeus as DBRepository
+from ..DB.Repositorio_Turistas_Entrantes_Amadeus import BDRepositorioTuristasEntrantesAmadeus as DBRepository
 from ..Utilidades.Conversores import Conversores as Conversor
 
 def obtener_cantidad_turistas_en_ciudades_mensual_en_rango_anios(PaisDestino, AnioInicio, AnioFin): #OK

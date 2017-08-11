@@ -1,4 +1,4 @@
-from ..DB.DBRepositoryAena import DBRepositoryAena as DBRepository
+from ..DB.Repositorio_Turistas_Entrantes_Aena import RepositoryTuristasEntrantesAena as DBRepository
 from ..Utilidades.Conversores import Conversores as Conversor
 
 def obtener_cantidad_ciudad_rango_anios(PaisDestino, CiudadDestino, AnioInicio, AnioFin):

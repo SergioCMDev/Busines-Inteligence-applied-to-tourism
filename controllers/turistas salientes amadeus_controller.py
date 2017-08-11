@@ -1,4 +1,4 @@
-from ..DB.DBRepositoryAmadeus import DBRepositoryAmadeus as DBRepository
+from ..DB.Repositorio_Turistas_Salientes_Amadeus import BDRepositorioTuristasSalientesAmadeus as DBRepository
 from ..Utilidades.Conversores import Conversores as Conversor
 
 def obtener_cantidad_ciudad_durante_mes_en_rango_anios(PaisOrigen, Mes, CiudadOrigen, AnioInicio, AnioFin): #OK

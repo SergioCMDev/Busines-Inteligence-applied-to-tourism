@@ -1,4 +1,4 @@
-from ..DB.DBRepositoryAmadeus import DBRepositoryAmadeus as DBRepository
+from ..DB.Repositorio_Vuelos_Salientes_Amadeus import BDRepositorioVuelosSalientesAmadeus as DBRepository
 from ..Utilidades.Conversores import Conversores as Conversor
 
 
