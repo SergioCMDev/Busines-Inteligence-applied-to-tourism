@@ -397,8 +397,8 @@ def obtener_cantidad_vuelos_pais_en_mes_en_rango_anios(PaisDestino, Mes, AnioIni
 
 def obtener_cantidad_vuelos_pais_en_rango_anios(PaisDestino, AnioInicio, AnioFin):#OK
     """
-    Dado un pais y un rango de años obtiene la cantidad de vuelos que llegan a ese pais diviendo por años
-    Dado un pais y un rango de años obtiene la cantidad de vuelos que llegan a ese pais diviendo por años
+    Dado un pais y un rango de años obtiene la cantidad de vuelos que llegan a ese pais dividiendo  por años
+    Dado un pais y un rango de años obtiene la cantidad de vuelos que llegan a ese pais dividiendo  por años
     :param PaisDestino: Pais al que llegan los vuelos
     :type PaisDestino: str
     :param AnioInicio: Anio Inicio
