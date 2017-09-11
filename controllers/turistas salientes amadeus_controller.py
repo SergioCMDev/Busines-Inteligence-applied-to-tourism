@@ -3,8 +3,8 @@ from ..Utilidades.Conversores import Conversores as Conversor
 
 def obtener_cantidad_ciudad_durante_mes_en_rango_anios(PaisOrigen, Mes, CiudadOrigen, AnioInicio, AnioFin): #OK
     """
-    Dado un pais origen, una ciudad, un mes y un rango de años obtiene la cantidad de turistas salientes de ese pais diviendo por meses y años
-    Dado un pais origen, una ciudad, un mes y un rango de años obtiene la cantidad de turistas salientes de ese pais diviendo por meses y años
+    Dado un pais origen, una ciudad, un mes y un rango de años obtiene la cantidad de turistas salientes de ese pais dividiendo por meses y años
+    Dado un pais origen, una ciudad, un mes y un rango de años obtiene la cantidad de turistas salientes de ese pais dividiendo por meses y años
     :param PaisOrigen: Pais del que salen los turistas
     :type PaisOrigen: str
     :param Mes: Mes
