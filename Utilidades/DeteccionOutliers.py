@@ -7,7 +7,6 @@ rng = np.random.RandomState(42)
 graphics = Graphics()
 from ..Utilidades.UtilidadesMatriz import UtilidadesMatriz
 utilidadesMatriz = UtilidadesMatriz()
-import pandas as pd
 from sklearn.covariance import EmpiricalCovariance, MinCovDet
 
 class DeteccionOutliers:
