@@ -1,5 +1,4 @@
 import connexion
-from swagger_server.models.body import Body
 from swagger_server.models.body1 import Body1
 from swagger_server.models.body2 import Body2
 from swagger_server.models.body3 import Body3
