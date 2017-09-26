@@ -69,7 +69,7 @@ def obtener_porcentaje_del_grado_de_ocupacion_de_parcelas_en_ciudad_en_rango_ani
     conversor = Conversor()
     repository = DBRepository()
 
-    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio(Ciudad, AnioInicio, AnioFin)
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnRangoAnios(Ciudad, AnioInicio, AnioFin)
 
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
@@ -98,7 +98,7 @@ def obtener_porcentaje_del_grado_de_ocupacion_de_parcelas_en_ciudad_en_rango_ani
     conversor = Conversor()
     repository = DBRepository()
 
-    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio(Ciudad, AnioInicio, AnioFin, Mes)
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnRangoAniosEnMes(Ciudad, AnioInicio, AnioFin, Mes)
 
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 

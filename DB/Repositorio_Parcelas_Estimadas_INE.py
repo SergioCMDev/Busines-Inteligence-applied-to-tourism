@@ -7,30 +7,30 @@ Created on Sun Jun 25 12:50:46 2017
 from ..DB.MySQL_INE import MySQLAccessINE as DBContext #Server
 #from self.db.MySQL import MySQLAccess as DBContext #Local
 
-class RepositoryEstanciaMediaINE():
+class RepositoryParcelasEstimadasINE():
     
     
     #####################################################################################################################################################################
-    ##################################NUMERO DE DIAS DE ESTANCIA MEDIA EN CIUDAD####################################################
+    ##################################NUMERO DE PARCELAS ESTIMADAS EN CIUDAD####################################################
     #####################################################################################################################################################################
 
-    def ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnAnio( self, Ciudad, Anio):
+    def ObtenerNumeroTotalParcelasEstimadasEnCiudadEnAnio( self, Ciudad, Anio):
         self.db = DBContext()
         self.labels   = ['Anio', 'Pais_Origen','Ciudad_Origen','Numero_Turistas']
-        return (self.db.ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnAnio( Ciudad, str(Anio)), self.labels) 
+        return (self.db.ObtenerNumeroTotalParcelasEstimadasEnCiudadEnAnio( Ciudad, str(Anio)), self.labels) 
     
-    def ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
+    def ObtenerNumeroTotalParcelasEstimadasEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
         self.db = DBContext()
         self.labels   = ['Anio', 'Mes','Pais_Origen','Ciudad_Origen', 'Numero_Turistas']
-        return (self.db.ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
+        return (self.db.ObtenerNumeroTotalParcelasEstimadasEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
     
-    def ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
+    def ObtenerNumeroTotalParcelasEstimadasEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
         self.labels   = ['Anio', 'Numero_Turistas']
-        return (self.db.ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
+        return (self.db.ObtenerNumeroTotalParcelasEstimadasEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
     
-    def ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
+    def ObtenerNumeroTotalParcelasEstimadasEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
         self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
-        return (self.db.ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
+        return (self.db.ObtenerNumeroTotalParcelasEstimadasEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   

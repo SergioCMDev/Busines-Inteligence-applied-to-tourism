@@ -1,8 +1,5 @@
-import connexion
-from datetime import date, datetime
-from typing import List, Dict
-from six import iteritems
-from ..util import deserialize_date, deserialize_datetime
+from ..DB.Repositorio_Parcelas_Estimadas_INE import RepositoryParcelasEstimadasINE as DBRepository
+from ..Utilidades.Conversores import Conversores as Conversor
 
 
 def obtener_numero_de_parcelas_estimadas_en_ciudad_en_anio(Ciudad, Anio):
@@ -16,8 +13,18 @@ def obtener_numero_de_parcelas_estimadas_en_ciudad_en_anio(Ciudad, Anio):
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
 
+    cursor, labels = repository.ObtenerNumeroTotalParcelasEstimadasEnCiudadEnAnio(Ciudad, Anio)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 def obtener_numero_de_parcelas_estimadas_en_ciudad_en_anio_mensualmente(Ciudad, Anio):
     """
@@ -30,8 +37,18 @@ def obtener_numero_de_parcelas_estimadas_en_ciudad_en_anio_mensualmente(Ciudad, 
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
 
+    cursor, labels = repository.ObtenerNumeroTotalParcelasEstimadasEnCiudadEnAnioMensualmente(Ciudad, Anio)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 def obtener_numero_de_parcelas_estimadas_en_ciudad_en_rango_anios(Ciudad, AnioInicio, AnioFin):
     """
@@ -46,8 +63,18 @@ def obtener_numero_de_parcelas_estimadas_en_ciudad_en_rango_anios(Ciudad, AnioIn
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
 
+    cursor, labels = repository.ObtenerNumeroTotalParcelasEstimadasEnCiudadEnRangoAnios(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 def obtener_numero_de_parcelas_estimadas_en_ciudad_en_rango_anios_en_mes(Ciudad, AnioInicio, AnioFin, Mes):
     """
@@ -64,4 +91,15 @@ def obtener_numero_de_parcelas_estimadas_en_ciudad_en_rango_anios_en_mes(Ciudad,
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerNumeroTotalParcelasEstimadasEnCiudadEnRangoAniosEnMes(Ciudad, AnioInicio, AnioFin, Mes)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval

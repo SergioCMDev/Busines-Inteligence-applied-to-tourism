@@ -24,13 +24,13 @@ class RepositoryGradoOcupacionParcelasINE():
         self.labels   = ['Anio', 'Mes','Pais_Origen','Ciudad_Origen', 'Numero_Turistas']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
     
-    def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio(self, Ciudad, anioInicio, anioFin):
+    def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
         self.labels   = ['Anio', 'Numero_Turistas']
-        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
+        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
     
-    def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio(self, Ciudad, anioInicio, anioFin, Mes):
+    def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
         self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
-        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
+        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   

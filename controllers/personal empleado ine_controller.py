@@ -1,8 +1,6 @@
-import connexion
-from datetime import date, datetime
-from typing import List, Dict
-from six import iteritems
-from ..util import deserialize_date, deserialize_datetime
+from ..DB.Repositorio_Personal_Empleado_INE import RepositoryPersonalEmpleadoINE as DBRepository
+from ..Utilidades.Conversores import Conversores as Conversor
+
 
 
 def obtener_cantidad_total_personal_empleado_en_ciudad_en_anio(Ciudad, Anio):
@@ -16,8 +14,18 @@ def obtener_cantidad_total_personal_empleado_en_ciudad_en_anio(Ciudad, Anio):
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
 
+    cursor, labels = repository.ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnAnio(Ciudad, Anio)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 def obtener_cantidad_total_personal_empleado_en_ciudad_en_anio_mensualmente(Ciudad, Anio):
     """
@@ -30,7 +38,18 @@ def obtener_cantidad_total_personal_empleado_en_ciudad_en_anio_mensualmente(Ciud
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnAnioMensualmente(Ciudad, Anio)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 
 def obtener_cantidad_total_personal_empleado_en_ciudad_en_rango_anios(Ciudad, AnioInicio, AnioFin):
@@ -46,8 +65,18 @@ def obtener_cantidad_total_personal_empleado_en_ciudad_en_rango_anios(Ciudad, An
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
 
+    cursor, labels = repository.ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnRangoAnios(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 def obtener_cantidad_total_personal_empleado_en_ciudad_en_rango_anios_en_mes(Ciudad, AnioInicio, AnioFin, Mes):
     """
@@ -64,4 +93,15 @@ def obtener_cantidad_total_personal_empleado_en_ciudad_en_rango_anios_en_mes(Ciu
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnRangoAniosEnMes(Ciudad, AnioInicio, AnioFin, Mes)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
