@@ -1,8 +1,6 @@
-import connexion
-from datetime import date, datetime
-from typing import List, Dict
-from six import iteritems
-from ..util import deserialize_date, deserialize_datetime
+from ..DB.Repositorio_Grado_De_Ocupacion_Por_Habitaciones_INE import RepositoryGradoOcupacionHabitacionesINE as DBRepository
+from ..Utilidades.Conversores import Conversores as Conversor
+
 
 
 def obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_anio(Ciudad, Anio):
@@ -16,7 +14,18 @@ def obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_anio(Ciudad, Anio):
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnio(Ciudad, Anio)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 
 def obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_anio_mensualmente(Ciudad, Anio):
@@ -30,8 +39,18 @@ def obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_anio_mensualmente(C
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
 
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnioMensualmente(Ciudad, Anio)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 def obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_rango_anios(Ciudad, AnioInicio, AnioFin):
     """
@@ -46,8 +65,18 @@ def obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_rango_anios(Ciudad,
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
 
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnRangoAnios(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
 
 def obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_rango_anios_en_mes(Ciudad, AnioInicio, AnioFin, Mes):
     """
@@ -64,4 +93,15 @@ def obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_rango_anios_en_mes(
 
     :rtype: None
     """
-    return 'do some magic!'
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnioEnMes(Ciudad, AnioInicio, AnioFin, Mes)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval

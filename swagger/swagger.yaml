@@ -86,7 +86,7 @@ tags:
     \ por apartamentos en fin de semana en una ciudad de la BD de INE"
 - name: "Turistas Entrantes INE"
   description: "Metodos relacionados con turistas entrantes de la BD de INE"
-- name: "Viajeros Salientes INE"
+- name: "Turistas Salientes INE"
   description: "Metodos relacionados con turistas salientes de la BD de INE"
 - name: "Parcelas Estimadas INE"
   description: "Metodos relacionados con la obtencion del numero de parcelas estimadas\
@@ -3295,7 +3295,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas entrantes\
         \ amadeus_controller"
-  /INE/ViajerosSalientes/ObtenerCantidadTuristasDeCiudadRangoAniosMes/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerCantidadTuristasDeCiudadRangoAniosMes/{Ciudad}:
     get:
       tags:
       - "Viajeros Salientes INE"
@@ -3343,7 +3343,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.viajeros salientes\
         \ ine_controller"
-  /INE/ViajerosSalientes/ObtenerCantidadTuristasDeCiudadRangoAnios/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerCantidadTuristasDeCiudadRangoAnios/{Ciudad}:
     get:
       tags:
       - "Viajeros Salientes INE"
@@ -3384,7 +3384,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.viajeros salientes\
         \ ine_controller"
-  /INE/ViajerosSalientes/ObtenerCantidadTuristasDeCiudadRangoAniosMensualmente/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerCantidadTuristasDeCiudadRangoAniosMensualmente/{Ciudad}:
     get:
       tags:
       - "Viajeros Salientes INE"
@@ -3425,7 +3425,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.viajeros salientes\
         \ ine_controller"
-  /INE/ViajerosSalientes/ObtenerCantidadTotalTuristasDeCiudadAnio/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerCantidadTotalTuristasDeCiudadAnio/{Ciudad}:
     get:
       tags:
       - "Viajeros Salientes INE"
@@ -3458,7 +3458,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.viajeros salientes\
         \ ine_controller"
-  /INE/ViajerosSalientes/ObtenerCantidadTuristasDeCiudadAnioMensualmente/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerCantidadTuristasDeCiudadAnioMensualmente/{Ciudad}:
     get:
       tags:
       - "Viajeros Salientes INE"
@@ -3965,12 +3965,19 @@ paths:
         required: true
         type: "string"
         default: "Madrid"
-      - name: "Anio"
+      - name: "AnioInicio"
         in: "query"
-        description: "Anio"
+        description: "Anio Inicio"
         required: true
         type: "integer"
         default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
         format: "int64"
       responses:
         200:
@@ -4197,6 +4204,12 @@ paths:
         type: "integer"
         default: 2004
         format: "int64"
+      - name: "Mes"
+        in: "query"
+        description: "Mes"
+        required: true
+        type: "string"
+        default: "Enero"
       responses:
         200:
           description: "successful operation"
@@ -4553,13 +4566,20 @@ paths:
         required: true
         type: "string"
         default: "Madrid"
-      - name: "Anio"
+      - name: "AnioInicio"
         in: "query"
-        description: "Anio"
+        description: "Anio Inicio"
         required: true
         type: "integer"
         default: 2002
         format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2005
+        format: "int64
       responses:
         200:
           description: "successful operation"
@@ -4785,6 +4805,12 @@ paths:
         type: "integer"
         default: 2004
         format: "int64"
+      - name: "Mes"
+        in: "query"
+        description: "Mes"
+        required: true
+        type: "string"
+        default: "Enero"
       responses:
         200:
           description: "successful operation"
@@ -5374,6 +5400,12 @@ paths:
         type: "integer"
         default: 2004
         format: "int64"
+      - name: "Mes"
+        in: "query"
+        description: "Mes"
+        required: true
+        type: "string"
+        default: "Enero"
       responses:
         200:
           description: "successful operation"
