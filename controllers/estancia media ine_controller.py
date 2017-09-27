@@ -16,11 +16,10 @@ def obtener_cantidad_dias_estancia_media_estimados_en_ciudad_en_anio(Ciudad, Ani
     repository = DBRepository()
 
     cursor, labels = repository.ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnAnio(Ciudad, Anio)
-
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas, labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -45,7 +44,31 @@ def obtener_cantidad_dias_estancia_media_estimados_en_ciudad_en_anio_mensualment
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
+
+def obtener_cantidad_dias_estancia_media_estimados_en_ciudad_en_rango_anios_mensualmente(Ciudad, AnioInicio, AnioFin):
+    """
+    Dado una ciudad y un año obtiene los dias de estancia media estimados en dicha ciudad en ese rango de años dividido por meses
+    Dado una ciudad y un año obtiene los dias de estancia media estimados en dicha ciudad en ese rango de años dividido por meses
+    :param Ciudad: Ciudad
+    :type Ciudad: str
+    :param Anio: Anio
+    :type Anio: int
+
+    :rtype: None
+    """
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnRangoAniosMensualmente(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -72,7 +95,7 @@ def obtener_cantidad_dias_estancia_media_estimados_en_ciudad_en_rango_anios(Ciud
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -101,7 +124,7 @@ def obtener_cantidad_dias_estancia_media_estimados_en_ciudad_en_rango_anios_en_m
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval

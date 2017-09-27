@@ -21,7 +21,7 @@ def obtener_porcentaje_del_grado_de_ocupacion_por_apartamentos_en_fin_de_semana_
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -41,12 +41,43 @@ def obtener_porcentaje_del_grado_de_ocupacion_por_apartamentos_en_fin_de_semana_
     conversor = Conversor()
     repository = DBRepository()
 
-    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnAnioMensuamente(Ciudad, Anio)
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnAnioMensualmente(Ciudad, Anio)
 
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    #matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+    #retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+#    return retval
+    retval = conversor.convertirAJson(arrayTuplas)
+    return retval
+
+
+
+#AÑADIR A SWAGGER
+def obtener_porcentaje_del_grado_de_ocupacion_por_apartamentos_en_fin_de_semana_en_ciudad_en_rango_anios_mensualmente(Ciudad, AnioInicio, AnioFin):
+    """
+    Dado una ciudad y un rango de años obtiene el porcentaje del grado de ocupacion por apartamentos en fin de semana en dicha ciudad en esos años
+    Dado una ciudad y un rango de años obtiene el porcentaje del grado de ocupacion por apartamentos en fin de semana en dicha ciudad en esos años
+    :param Ciudad: Ciudad
+    :type Ciudad: str
+    :param AnioInicio: Anio Inicio
+    :type AnioInicio: int
+    :param AnioFin: Anio Fin
+    :type AnioFin: int
+
+    :rtype: None
+    """
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnRangoAniosMensualmente(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -68,12 +99,12 @@ def obtener_porcentaje_del_grado_de_ocupacion_por_apartamentos_en_fin_de_semana_
     conversor = Conversor()
     repository = DBRepository()
 
-    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnFinDeSemanaEnCiudadEnRangoAniosAnio(Ciudad, AnioInicio, AnioFin)
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnRangoAnios(Ciudad, AnioInicio, AnioFin)
 
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -97,12 +128,12 @@ def obtener_porcentaje_del_grado_de_ocupacion_por_apartamentos_en_fin_de_semana_
     conversor = Conversor()
     repository = DBRepository()
 
-    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnFinDeSemanaEnCiudadEnAnio(Ciudad, AnioInicio, AnioFin, Mes)
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnRangoAniosEnMes(Ciudad, AnioInicio, AnioFin, Mes)
 
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval

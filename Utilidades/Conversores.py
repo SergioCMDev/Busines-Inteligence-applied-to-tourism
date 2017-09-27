@@ -167,10 +167,11 @@ class Conversores:
         return retVal
 
 
-    #filaInicio y filaFin pueden ser tanto años, como paises, como ciudades
     def ConvertirTuplasToMatriz(self, tuplas, labels):
+        print(labels)
         tuplasMatriz = DataFrame(tuplas, columns = labels)
-#        print(tuplasMatriz)
+        print("TUPLAS")
+        print(tuplasMatriz)
         matriz, lista = matrix.ObtenerMatrizDatos(tuplasMatriz, labels)
 #        print(tuplasMatriz)
         return matriz, lista
