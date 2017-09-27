@@ -788,7 +788,112 @@ class MySQLAccessINE:
     
     
     
+    ##################################################################################################################################################################################################################################################################
+##################################################################################################################NUMERO DE PLAZAS ESTIMADAS EN CIUDAD #################################################################################################################################
+#################################################################################################################################################################################################################################################################
+ 
     
+    
+    def ObtenerNumeroTotalPlazasEstimadasEnCiudadEnAnio( self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                      "YEAR(ine_datos.fecha) AS ANIO, "+
+                      "AVG(ine_datos.valor) AS CANTIDAD "+
+                      "FROM "+
+                          "ine_datos "+
+                      "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                      "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                      "JOIN ine_valores_variables ON ine_defserie_variables.var_115 = ine_valores_variables.id "+
+                      "WHERE "+
+                          "ine_defserie.name = 'Número de plazas estimadas' AND ine_valores_variables.name = %s  "+
+                          "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                      "GROUP BY "+
+                          "YEAR(ine_datos.fecha)"
+                        )
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor
+    
+    def ObtenerNumeroTotalPlazasEstimadasEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                      "YEAR(ine_datos.fecha) AS ANIO, "+
+                      "MONTH(ine_datos.fecha) AS MES, "+
+                      "SUM(ine_datos.valor) AS CANTIDAD "+
+                      "FROM "+
+                          "ine_datos "+
+                      "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                      "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                      "JOIN ine_valores_variables ON ine_defserie_variables.var_115 = ine_valores_variables.id "+
+                      "WHERE "+
+                          "ine_defserie.name = 'Número de plazas estimadas' AND ine_valores_variables.name = %s  "+
+                          "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                      "GROUP BY "+
+                          "YEAR(ine_datos.fecha), "+
+                          "MONTH(ine_datos.fecha)"
+                        )
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor
+    
+    def ObtenerNumeroTotalPlazasEstimadasEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                      "YEAR(ine_datos.fecha) AS ANIO, "+
+                      "AVG(ine_datos.valor) AS CANTIDAD "+
+                      "FROM "+
+                          "ine_datos "+
+                      "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                      "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                      "JOIN ine_valores_variables ON ine_defserie_variables.var_115 = ine_valores_variables.id "+
+                      "WHERE "+
+                          "ine_defserie.name = 'Número de plazas estimadas' AND ine_valores_variables.name = %s  "+
+                          "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                      "GROUP BY "+
+                          "YEAR(ine_datos.fecha)"
+                        )
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin))  
+        return self.cursor
+    
+    def  ObtenerNumeroTotalPlazasEstimadasEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                      "YEAR(ine_datos.fecha) AS ANIO, "+
+                      "MONTH(ine_datos.fecha) AS MES, "+
+                      "SUM(ine_datos.valor) AS CANTIDAD "+
+                      "FROM "+
+                          "ine_datos "+
+                      "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                      "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                      "JOIN ine_valores_variables ON ine_defserie_variables.var_115 = ine_valores_variables.id "+
+                      "WHERE "+
+                          "ine_defserie.name = 'Número de plazas estimadas' AND ine_valores_variables.name = %s  "+
+                          "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                      "GROUP BY "+
+                          "YEAR(ine_datos.fecha), "+
+                          "MONTH(ine_datos.fecha)"
+                        )
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin))  
+        return self.cursor
+    
+    def ObtenerNumeroTotalPlazasEstimadasEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                      "YEAR(ine_datos.fecha) AS ANIO, "+
+                      "SUM(ine_datos.valor) AS CANTIDAD "+
+                      "FROM "+
+                          "ine_datos "+
+                      "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                      "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                      "JOIN ine_valores_variables ON ine_defserie_variables.var_115 = ine_valores_variables.id "+
+                      "WHERE "+
+                          "ine_defserie.name = 'Número de plazas estimadas' AND ine_valores_variables.name = %s  "+
+                          "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  AND MONTH(ine_datos.fecha) = %s"+
+                      "GROUP BY "+
+                          "YEAR(ine_datos.fecha)"
+                        )
+        Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin, Mes))  
+        return self.cursor
+       
     
     
     

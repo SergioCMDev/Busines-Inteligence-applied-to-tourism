@@ -7516,6 +7516,48 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.numero plazas estimadas\
         \ ine_controller"
+
+  /INE/NumeroPlazasEstimadas/ObtenerCantidadTotalNumeroPlazasEstimadasEnCiudadEnRangoAniosMensualmente/{Ciudad}:
+    get:
+      tags:
+      - "Numero Plazas Estimadas INE"
+      summary: "Dado una ciudad y un rango de años obtiene el numero de plazas estimadas\
+        \ en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene el numero de plazas\
+        \ estimadas en dicha ciudad en esos años mensualmente"
+      operationId: "obtener_cantidad_total_plazas_estimadas_en_ciudad_en_rango_anios_mensualmente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.numero plazas estimadas\
+        \ ine_controller"
+
   /INE/NumeroPlazasEstimadas/ObtenerCantidadTotalNumeroPlazasEstimadasEnCiudadEnRangoAniosEnMes/{Ciudad}:
     get:
       tags:
