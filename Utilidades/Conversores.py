@@ -99,7 +99,7 @@ class Conversores:
     
     ##Dadas las listas de outliers e inliers y la lista de columnas de la matriz y los valores centrales (para cuando hay tres columnas)
     def ObtenerJSONDeListasOutliersInliers(self, ValoresInliers, ValoresOutliers, listaLabels, listaValoresCentrales):
-        print(listaValoresCentrales)
+#        print(listaValoresCentrales)
         if len(ValoresOutliers) > 0:
             text = '{"Outliers":['
             for outlier in ValoresOutliers:
@@ -117,7 +117,6 @@ class Conversores:
             text = text[:-1]
             text = text +']}'
         if len(ValoresInliers) > 0:
-            print('dd')
             if len(ValoresOutliers) > 0:    
                 text = text[:-1]
                 comilla = ','

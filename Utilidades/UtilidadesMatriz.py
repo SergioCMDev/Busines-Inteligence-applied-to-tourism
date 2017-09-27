@@ -57,8 +57,7 @@ class UtilidadesMatriz:
         if len(labels) == 3 :
             num_anios = ValorFinal-ValorInicial + 1
             array_1 = np.zeros(num_anios * numColumnas)
-#            print(array_1)
-#            print(matriz.loc[ValorInicial : ValorFinal])
+
             pos = 0
             anios = np.arange(ValorInicial, ValorFinal+1, 1)
 
@@ -164,6 +163,7 @@ class UtilidadesMatriz:
             for columnas in np.arange(0, len(listaColumnas),1):
                 pos = filas * len(listaColumnas) + columnas
 #                print(filas,  columnas, valores[pos])
+                print('fff')
                 print(valores[pos])
                 if type(valores[pos]) is int:
                     matriz[filas][columnas] = int(valores[pos])
