@@ -39,6 +39,5 @@ class RepositoryNumeroEstablecimientosAbiertosEstimadosINE():
     def ObtenerNumeroEstablecimientosAbiertosEstimadosEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
         self.labels   = ['Anio', 'Cantidad']
-
         return (self.db.ObtenerNumeroEstablecimientosAbiertosEstimadosEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   

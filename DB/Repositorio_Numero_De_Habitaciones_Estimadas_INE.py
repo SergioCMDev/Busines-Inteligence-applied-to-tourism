@@ -11,26 +11,31 @@ class RepositoryNumeroHabitacionesEstimadasINE():
     
     
     #####################################################################################################################################################################
-    ##################################NUMERO DE DIAS DE ESTANCIA MEDIA EN CIUDAD####################################################
+    ##################################NUMERO DE HABITACIONES ESTIMADAS EN CIUDAD####################################################
     #####################################################################################################################################################################
 
     def ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnAnio( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Pais_Origen','Ciudad_Origen','Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnAnio( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes','Pais_Origen','Ciudad_Origen', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
+    
+    def  ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.db = DBContext()
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
+        return (self.db.ObtenerNumeroEstablecimientosAbiertosEstimadosEnCiudadEnRangoAniosMensualmente( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
     
     def ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerNumeroTotalHabitacionesEstimadasEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   
