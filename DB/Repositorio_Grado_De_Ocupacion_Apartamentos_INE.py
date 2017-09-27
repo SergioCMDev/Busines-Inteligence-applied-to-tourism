@@ -16,21 +16,27 @@ class RepositoryGradoOcupacionApartamentosINE():
 
     def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnAnio( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Pais_Origen','Ciudad_Origen','Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnAnio( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes','Pais_Origen','Ciudad_Origen', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
+    
+    def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.db = DBContext()
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
+        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnRangoAniosMensualmente( Ciudad, str(anioInicio), str(anioFin)), self.labels)
+    
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   

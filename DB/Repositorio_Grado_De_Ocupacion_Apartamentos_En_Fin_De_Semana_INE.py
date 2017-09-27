@@ -22,7 +22,7 @@ class RepositoryGradoOcupacionApartamentosFinDeSemanaINE():
     def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
         self.db = DBContext()
         self.labels   = ['Mes','Cantidad']
-        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnAnioMensuamente( Ciudad, str(Anio)), self.labels) 
+        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()

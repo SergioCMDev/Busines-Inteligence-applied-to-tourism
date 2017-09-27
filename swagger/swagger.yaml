@@ -7621,6 +7621,56 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.grado de ocupacion\
         \ por plazas en fin de semana ine_controller"
+
+  ? /INE/GradoDeOcupacionPorPlazasEnFinDeSemana/ObtenerCantidadTotalGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAniosMensualmente/{Ciudad}
+  : get:
+      tags:
+      - "Grado De Ocupacion Por Plazas En Fin De Semana INE"
+      summary: "Dado una ciudad y un rango de años obtiene el grado de ocupacion por\
+        \ plazas en fin de semana en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene el grado de ocupacion\
+        \ por plazas en fin de semana en dicha ciudad en esos años mensualmente"
+      operationId: "obtener_grado_de_ocupacion_por_plazas_en_fin_de_semana_en_ciudad_en_rango_anios_mensualmente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.grado de ocupacion\
+        \ por plazas en fin de semana ine_controller"
+
+
+
+
+
+
+
+
+
   ? /INE/GradoDeOcupacionPorPlazasEnFinDeSemana/ObtenerCantidadTotalGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAniosEnMes/{Ciudad}
   : get:
       tags:
@@ -7774,6 +7824,57 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.grado de ocupacion\
         \ por habitaciones ine_controller"
+
+  /INE/GradoDeOcupacionPorHabitaciones/ObtenerCantidadTotalGradoDeOcupacionPorHabitacionesEnCiudadEnRangoAniosMensualmente/{Ciudad}:
+    get:
+      tags:
+      - "Grado De Ocupacion Por Habitaciones INE"
+      summary: "Dado una ciudad y un rango de años obtiene el grado de ocupacion por\
+        \ habitaciones en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene el grado de ocupacion\
+        \ por habitaciones en dicha ciudad en esos años mensualmente"
+      operationId: "obtener_grado_de_ocupacion_por_habitaciones_en_ciudad_en_rango_anios_mensualmente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.grado de ocupacion\
+        \ por habitaciones ine_controller"
+
+
+
+
+
+
+
+
+
+
   /INE/GradoDeOcupacionPorHabitaciones/ObtenerCantidadTotalGradoDeOcupacionPorHabitacionesEnCiudadEnRangoAniosEnMes/{Ciudad}:
     get:
       tags:
@@ -7926,6 +8027,54 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.grado de ocupacion\
         \ por plazas ine_controller"
+
+
+  /INE/GradoDeOcupacionPorPlazas/ObtenerCantidadTotalGradoDeOcupacionPorPlazasEnCiudadEnRangoAniosMensualmente/{Ciudad}:
+    get:
+      tags:
+      - "Grado De Ocupacion Por Plazas INE"
+      summary: "Dado una ciudad y un rango de años obtiene el grado de ocupacion por\
+        \ tanto por cien por plazas en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene el grado de ocupacion\
+        \ por tanto por cien por plazas en dicha ciudad en esos años mensualmente"
+      operationId: "obtener_grado_de_ocupacion_por_tanto_por_cien_por_plazas_en_ciudad_en_rango_anios_mensualmente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.grado de ocupacion\
+        \ por plazas ine_controller"
+
+
+
+
+
+
   /INE/GradoDeOcupacionPorPlazas/ObtenerCantidadTotalGradoDeOcupacionPorPlazasEnCiudadEnRangoAniosEnMes/{Ciudad}:
     get:
       tags:
@@ -8437,6 +8586,48 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.grado de ocupacion\
         \ por apartamentos ine_controller"
+
+  ? /INE/PorcentajeDeGradoDeOcupacionPorApartamentos/ObtenerCantidadTotalPorcentajeDeGradoDeOcupacionPorApartamentosEnCiudadEnRangoAniosMensualmente/{Ciudad}
+  : get:
+      tags:
+      - "Grado De Ocupacion Por Apartamentos INE"
+      summary: "Dado una ciudad y un rango de años obtiene el porcentaje del grado\
+        \ de ocupacion por apartamentos en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene el porcentaje del grado\
+        \ de ocupacion por apartamentos en dicha ciudad en esos años mensualmente"
+      operationId: "obtener_porcentaje_del_grado_de_ocupacion_por_apartamentos_en_ciudad_en_rango_anios_mensualmente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.grado de ocupacion\
+        \ por apartamentos ine_controller"
+
   ? /INE/PorcentajeDeGradoDeOcupacionPorApartamentos/ObtenerCantidadTotalPorcentajeDeGradoDeOcupacionPorApartamentosEnCiudadEnRangoAniosEnMes/{Ciudad}
   : get:
       tags:
@@ -8591,6 +8782,49 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.numero de apartamentos\
         \ estimados ine_controller"
+
+  /INE/NumeroDeApartamentosEstimados/ObtenerCantidadTotalNumeroDeApartamentosEstimadosEnCiudadEnRangoAniosMensualmente/{Ciudad}:
+    get:
+      tags:
+      - "Numero De Apartamentos Estimados INE"
+      summary: "Dado una ciudad y un rango de años obtiene el numero de apartamentos\
+        \ estimados en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene el numero de apartamentos\
+        \ estimados en dicha ciudad en esos años mensualmente"
+      operationId: "obtener_numero_de_apartamentos_estimados_en_ciudad_en_rango_anios_mensualmente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.numero de apartamentos\
+        \ estimados ine_controller"
+
+
   /INE/NumeroDeApartamentosEstimados/ObtenerCantidadTotalNumeroDeApartamentosEstimadosEnCiudadEnRangoAniosEnMes/{Ciudad}:
     get:
       tags:

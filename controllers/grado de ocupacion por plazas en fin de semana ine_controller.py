@@ -21,7 +21,7 @@ def obtener_grado_de_ocupacion_por_plazas_en_fin_de_semana_en_ciudad_en_anio(Ciu
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -46,10 +46,40 @@ def obtener_grado_de_ocupacion_por_plazas_en_fin_de_semana_en_ciudad_en_anio_men
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
+
+def obtener_grado_de_ocupacion_por_plazas_en_fin_de_semana_en_ciudad_en_rango_anios_mensualmente(Ciudad, AnioInicio, AnioFin):
+    """
+    Dado una ciudad y un rango de años obtiene el grado de ocupacion por tanto por cien por plazas en dicha ciudad en esos años mensualmente
+    Dado una ciudad y un rango de años obtiene el grado de ocupacion por tanto por cien por plazas en dicha ciudad en esos años mensualmente
+    :param Ciudad: Ciudad
+    :type Ciudad: str
+    :param AnioInicio: Anio Inicio
+    :type AnioInicio: int
+    :param AnioFin: Anio Fin
+    :type AnioFin: int
+
+    :rtype: None
+    """
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAniosMensualmente(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas, labels)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
+
+
+
+
 
 def obtener_grado_de_ocupacion_por_plazas_en_fin_de_semana_en_ciudad_en_rango_anios(Ciudad, AnioInicio, AnioFin):
     """
@@ -72,7 +102,7 @@ def obtener_grado_de_ocupacion_por_plazas_en_fin_de_semana_en_ciudad_en_rango_an
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas, labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -100,7 +130,7 @@ def obtener_grado_de_ocupacion_por_plazas_en_fin_de_semana_en_ciudad_en_rango_an
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas, labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval

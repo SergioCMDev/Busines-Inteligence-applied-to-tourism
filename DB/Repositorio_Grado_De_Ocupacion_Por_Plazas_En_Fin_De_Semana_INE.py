@@ -16,21 +16,26 @@ class RepositoryGradoOcupacionPlazasFinDeSemanaINE():
 
     def ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnAnio( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Pais_Origen','Ciudad_Origen','Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnAnio( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes','Pais_Origen','Ciudad_Origen', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
+    
+    def ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.db = DBContext()
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
+        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAniosMensualmente( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorPlazasEnFinDeSemanaEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   

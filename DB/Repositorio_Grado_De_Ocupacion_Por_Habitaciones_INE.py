@@ -16,21 +16,26 @@ class RepositoryGradoOcupacionHabitacionesINE():
 
     def ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnio( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Pais_Origen','Ciudad_Origen','Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnio( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes','Pais_Origen','Ciudad_Origen', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
+    
+    def ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.db = DBContext()
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
+        return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnRangoAniosMensualmente( Ciudad, str(anioInicio), str(anioFin)), self.labels)
     
     def ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnioEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerPorcentajeDelGradoDeOcupacionPorHabitacionesEnCiudadEnAnioEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   
