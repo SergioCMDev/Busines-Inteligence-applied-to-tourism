@@ -131,7 +131,6 @@ class UtilidadesMatriz:
     
     
     def createMatrizCantidad(self, tuples, columnas):
-        
         #Obtenemos datos de Filas
         listaFilas = self.obtenerParametros(columnas, tuples, 0)
         
@@ -145,10 +144,11 @@ class UtilidadesMatriz:
 
         #Creamos y Rellenamos matriz
         matrizRellena = self.rellenarMatriz(listaFilas, listaColumnas, valores)
-        
+
         #Creamos DataFrame de la matriz
         retval = DataFrame(matrizRellena, index = listaFilas, columns = listaColumnas)
         retval.index.name = columnas[0]
+
         return retval, listaFilas     
     
 
@@ -164,7 +164,12 @@ class UtilidadesMatriz:
             for columnas in np.arange(0, len(listaColumnas),1):
                 pos = filas * len(listaColumnas) + columnas
 #                print(filas,  columnas, valores[pos])
-                matriz[filas][columnas] = int(valores[pos])
+                print(valores[pos])
+                if type(valores[pos]) is int:
+                    matriz[filas][columnas] = int(valores[pos])
+                elif isinstance(valores[pos], np.float64):
+                    matriz[filas][columnas] = np.float64(valores[pos])
+
         return matriz
     
     

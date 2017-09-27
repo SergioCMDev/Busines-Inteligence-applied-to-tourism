@@ -83,7 +83,7 @@ class MySQLAccessINE:
     def ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnRangoAniosMensualmente( self, Ciudad, anioInicio, anioFin):
       self.cursor = self.connection.cursor()
       self.query = (" SELECT "+
-                      "YEAR(ine_datos.fecha) AS AÑO, "+
+                      "YEAR(ine_datos.fecha) AS ANIO, "+
                       "MONTH(ine_datos.fecha) AS MES, "+
                       "AVG(ine_datos.valor) AS CANTIDAD "+
                       "FROM "+
@@ -102,7 +102,7 @@ class MySQLAccessINE:
     def ObtenerCantidadDiasEstanciaMediaEstimadosEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
       self.cursor = self.connection.cursor()
       self.query = (" SELECT "+
-                      "YEAR(ine_datos.fecha) AS AÑO, "+
+                      "YEAR(ine_datos.fecha) AS ANIO, "+
                       "AVG(ine_datos.valor) AS CANTIDAD "+
                       "FROM "+
                       "ine_datos "+
@@ -189,7 +189,7 @@ class MySQLAccessINE:
                         	"JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
                         	"JOIN ine_valores_variables ON ine_defserie_variables.var_115 = ine_valores_variables.id "+
                         	"WHERE "+
-                        	 "ine_defserie.name = 'Grado de ocupación por apartamentos en fin de semana' AND ine_valores_variables.name LIKE '%s  "+
+                        	 "ine_defserie.name = 'Grado de ocupación por apartamentos en fin de semana' AND ine_valores_variables.name =  %s  "+
                               "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
                         	"GROUP BY "+
                         	    "YEAR(ine_datos.fecha)"
@@ -200,7 +200,7 @@ class MySQLAccessINE:
     def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
         self.cursor = self.connection.cursor()
         self.query = ("SELECT "+
-                	    "YEAR(ine_datos.fecha) AS AÑO, "+
+                	    "YEAR(ine_datos.fecha) AS ANIO, "+
                 	    "MONTH(ine_datos.fecha) AS MES, "+
                 	    "ine_datos.valor AS CANTIDAD "+
                 	"FROM "+
@@ -222,7 +222,7 @@ class MySQLAccessINE:
     def ObtenerPorcentajeDelGradoDeOcupacionPorApartamentosEnFinDeSemanaEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.cursor = self.connection.cursor()
         self.query = ("SELECT "+
-                    	    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    	    "YEAR(ine_datos.fecha) AS ANIO, "+
                     	    "ine_datos.valor AS CANTIDAD "+
                     	"FROM "+
                         	 "ine_datos "+
@@ -231,7 +231,7 @@ class MySQLAccessINE:
                     	"JOIN ine_valores_variables ON ine_defserie_variables.var_115 = ine_valores_variables.id "+
                     	"WHERE "+
                     	    "ine_defserie.name = 'Grado de ocupación por apartamentos en fin de semana' AND YEAR(ine_datos.fecha) >= %s "+
-                            "AND YEAR(ine_datos.fecha) <= %s AND ine_valores_variables.name LIKE '%%s%' AND MONTH(ine_datos.fecha) = %s  "+
+                            "AND YEAR(ine_datos.fecha) <= %s AND ine_valores_variables.name = %s AND MONTH(ine_datos.fecha) = %s  "+
                     	"GROUP BY  "+
                     	    "YEAR(ine_datos.fecha)"
                                         )

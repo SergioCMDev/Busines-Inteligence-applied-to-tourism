@@ -46,12 +46,12 @@ def obtener_porcentaje_del_grado_de_ocupacion_por_apartamentos_en_fin_de_semana_
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    #matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
-    #retval = conversor.ObtenerDataJSONExtendido(matriz)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
 
-#    return retval
-    retval = conversor.convertirAJson(arrayTuplas)
     return retval
+    #retval = conversor.convertirAJson(arrayTuplas)
+    #return retval
 
 
 
