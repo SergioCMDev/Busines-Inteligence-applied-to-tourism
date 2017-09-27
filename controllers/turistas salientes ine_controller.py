@@ -2,7 +2,7 @@ from ..DB.Repositorio_Turistas_Salientes_INE import RepositoryTuristasSalientesI
 from ..Utilidades.Conversores import Conversores as Conversor
 
 
-def obtener_cantidad_total_viajeros_salientes_de_ciudad_anio(Ciudad, Anio):
+def obtener_cantidad_total_turistas_salientes_de_ciudad_anio(Ciudad, Anio):
     """
     Dado una ciudad y un año obtiene la cantidad total de personas que salen de esa ciudad de forma total durante ese año
     Dado una ciudad y un año obtiene la cantidad total de personas que salen de esa ciudad de forma total durante ese año
@@ -54,7 +54,7 @@ def obtener_cantidad_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en
 
     return retval
 
-def obtener_cantidad_viajeros_salientes_de_ciudad_anio_mensualmente(Ciudad, Anio):
+def obtener_cantidad_turistas_salientes_de_ciudad_anio_mensualmente(Ciudad, Anio):
     """
     Dado una ciudad y un año obtiene la cantidad total de personas que salen de esa ciudad de forma total durante ese año de forma mensual
     Dado una ciudad y un año obtiene la cantidad total de personas que salen de esa ciudad de forma total durante ese año de forma mensual
@@ -184,8 +184,8 @@ def obtener_cantidad_viajeros_salientes_de_ciudad_origen_hacia_ciudad_destino_en
 
     return retval
 
-
-def obtener_cantidad_viajeros_salientes_de_ciudad_origen_hacia_ciudad_destino_en_anio_mensualmente(CiudadOrigen, CiudadDestino, Anio):
+    	
+def obtener_cantidad_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_anio_mensualmente(CiudadOrigen, CiudadDestino, Anio):
     """
     Dado una ciudad y un año obtiene la cantidad total de personas que salen de esa ciudad y van hacia ciudad destino de forma total durante ese año de forma mensual
     Dado una ciudad y un año obtiene la cantidad total de personas que salen de esa ciudad y van hacia ciudad destino de forma total durante ese año de forma mensual
@@ -241,7 +241,7 @@ def obtener_cantidad_viajeros_salientes_de_ciudad_origen_hacia_ciudad_destino_en
     return retval
 
 
-def obtener_cantidad_viajeros_salientes_de_ciudad_origen_hacia_ciudad_destino_en_rango_anio_en_mes(CiudadOrigen, CiudadDestino, AnioInicio, AnioFin, Mes):
+def obtener_cantidad_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_rango_anio_en_mes(CiudadOrigen, CiudadDestino, AnioInicio, AnioFin, Mes):
     """
     Dado una ciudad y un año obtiene la cantidad total de personas que salen de esa ciudad y van hacia ciudad destino de forma total durante esos años de forma anual durante ese mes
     Dado una ciudad y un año obtiene la cantidad total de personas que salen de esa ciudad y van hacia ciudad destino de forma total durante esos años de forma anual durante ese mes
@@ -301,7 +301,7 @@ def obtener_cantidad_viajeros_salientes_de_ciudad_origen_hacia_ciudad_destino_en
     return retval
 
 
-def obtener_cantidad_viajeros_salientes_de_ciudad_rango_anios(Ciudad, AnioInicio, AnioFin):
+def obtener_cantidad_turistas_salientes_de_ciudad_rango_anios(Ciudad, AnioInicio, AnioFin):
     """
     Dado una ciudad y un rango de años obtiene la cantidad total de personas que salen de esa ciudad de forma total durante esos años
     Dado una ciudad, un rango de años y un mes obtiene la cantidad total de personas que salen de esa ciudad de forma total durante esos años
@@ -327,7 +327,7 @@ def obtener_cantidad_viajeros_salientes_de_ciudad_rango_anios(Ciudad, AnioInicio
 
     return retval
 
-def obtener_cantidad_viajeros_salientes_de_ciudad_rango_anios_mensualmente(Ciudad, AnioInicio, AnioFin):
+def obtener_cantidad_turistas_salientes_de_ciudad_rango_anios_mensualmente(Ciudad, AnioInicio, AnioFin):
     """
     Dado una ciudad y un rango de años obtiene la cantidad total de personas que salen de esa ciudad de forma total durante esos años 
     Dado una ciudad, un rango de años y un mes obtiene la cantidad total de personas que salen de esa ciudad de forma total durante esos años mensualmente
@@ -354,7 +354,7 @@ def obtener_cantidad_viajeros_salientes_de_ciudad_rango_anios_mensualmente(Ciuda
     return retval
 
 
-def obtener_cantidad_viajeros_salientes_de_ciudad_rango_anios_mes(Ciudad, AnioInicio, AnioFin, Mes):
+def obtener_cantidad_turistas_salientes_de_ciudad_rango_anios_mes(Ciudad, AnioInicio, AnioFin, Mes):
     """
     Dado una ciudad, un rango de años y un mes obtiene la cantidad total de personas que salen de esa ciudad de forma global durante esos años en ese mismo mes
     Dado una ciudad, un rango de años y un mes obtiene la cantidad total de personas que salen de esa ciudad de forma global durante esos años en ese mismo mes
