@@ -132,15 +132,21 @@ class UtilidadesMatriz:
     def createMatrizCantidad(self, tuples, columnas):
         #Obtenemos datos de Filas
         listaFilas = self.obtenerParametros(columnas, tuples, 0)
+#        print('LISTA FILAS')
+#        print(listaFilas)
         
         #Obtenemos datos de columnas
         listaColumnas = self.obtenerParametros(columnas, tuples, 1)
         np.set_printoptions(threshold='nan')
+#        print('listaColumnas')
+#        print(listaColumnas)
+
         #Obtenemos valores a introducir en matriz
         posValores = len(columnas)-1
         valores = self.obtenerValoresMatriz(tuples, posValores, columnas)
         np.set_printoptions(threshold='nan')
-
+        print('VALORES')
+        print(valores)
         #Creamos y Rellenamos matriz
         matrizRellena = self.rellenarMatriz(listaFilas, listaColumnas, valores)
 
@@ -163,13 +169,11 @@ class UtilidadesMatriz:
             for columnas in np.arange(0, len(listaColumnas),1):
                 pos = filas * len(listaColumnas) + columnas
 #                print(filas,  columnas, valores[pos])
-                print('fff')
-                print(valores[pos])
-                if type(valores[pos]) is int:
+#                print(valores[pos])
+                if isinstance(valores[pos], int):
                     matriz[filas][columnas] = int(valores[pos])
                 elif isinstance(valores[pos], np.float64):
                     matriz[filas][columnas] = np.float64(valores[pos])
-
         return matriz
     
     

@@ -1128,6 +1128,702 @@ class MySQLAccessINE:
         self.cursor.execute(self.query,(anioInicio, anioFin, Ciudad, Mes))  
         return self.cursor              
         
+    
+    
+##################################################################################################################################################################################################################################################################
+##################################################################################################################OPERACIONES EN CIUDAD#################################################################################################################################
+##################################################################################################################################################################################################################################################################
+ 
+    def ObtenerCantidadPersonasApartamentosTuristicosHaciaCiudadDestinoEnAnio(self, CiudadDestino, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Apartamentos Turisticos' "+
+                        ") AND ine_defserie_variables.var_103 =( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, Anio, Anio))  
+        return self.cursor     
+         
+                  
+         
+         
+         
+    def ObtenerCantidadPersonasApartamentosTuristicosHaciaCiudadDestinoEnAnioMensualmente(self, CiudadDestino, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "MONTH(ine_datos.fecha) AS MES, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Apartamentos Turisticos' "+
+                        ") AND ine_defserie_variables.var_103 IN ( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, Anio, Anio))  
+        return self.cursor     
+         
+                  
+    def ObtenerCantidadPersonasApartamentosTuristicosHaciaCiudadDestinoEnRangoAnios(self, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Apartamentos Turisticos' "+
+                        ") AND ine_defserie_variables.var_103 =( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor     
+         
+    def ObtenerCantidadPersonasApartamentosTuristicosHaciaCiudadDestinoEnRangoAniosEnMes(self, CiudadDestino, AnioInicio, AnioFin, Mes):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Apartamentos Turisticos' "+
+                        ") AND ine_defserie_variables.var_103 =( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND MONTH(ine_datos.fecha) = %s AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin, Mes))  
+        return self.cursor     
+    def ObtenerCantidadPersonasApartamentosTuristicosHaciaCiudadDestinoEnRangoAniosMensualmente(self, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "MONTH(ine_datos.fecha) AS MES, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Apartamentos Turisticos' "+
+                        ") AND ine_defserie_variables.var_103 =( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor  
+    
+    
+    
+    
+    
+    
+    
+    #######################################################################CAMPING############################################################################
+    
+    def ObtenerCantidadPersonasCampingHaciaCiudadDestinoEnAnio(self, CiudadDestino, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Campings' "+
+                        ") AND ine_defserie_variables.var_103  IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, Anio, Anio))  
+        return self.cursor     
+         
+                  
+         
+         
+         
+    def ObtenerCantidadPersonasCampingHaciaCiudadDestinoEnAnioMensualmente(self, CiudadDestino, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "MONTH(ine_datos.fecha) AS MES, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Campings' "+
+                        ") AND ine_defserie_variables.var_103 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, Anio, Anio))  
+        return self.cursor     
+         
+                  
+    def ObtenerCantidadPersonasCampingHaciaCiudadDestinoEnRangoAnios(self, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Campings' "+
+                        ") AND ine_defserie_variables.var_103 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor     
+         
+    def ObtenerCantidadPersonasCampingHaciaCiudadDestinoEnRangoAniosEnMes(self, CiudadDestino, AnioInicio, AnioFin, Mes):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Campings' "+
+                        ") AND ine_defserie_variables.var_103 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_94 = '9834' AND MONTH(ine_datos.fecha) = %s AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin, Mes))  
+        return self.cursor     
+    def ObtenerCantidadPersonasCampingHaciaCiudadDestinoEnRangoAniosMensualmente(self, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "MONTH(ine_datos.fecha) AS MES, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Campings' "+
+                        ") AND ine_defserie_variables.var_103 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor  
+    
+    
+    ######################################################################## HOTELES ###################################################################################
+    
+    def ObtenerCantidadPersonasHotelHaciaCiudadDestinoEnAnio(self, CiudadDestino, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Hoteles' "+
+                        ") AND ine_defserie_variables.var_103 =( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, Anio, Anio))  
+        return self.cursor     
+         
+                  
+         
+         
+         
+    def ObtenerCantidadPersonasHotelHaciaCiudadDestinoEnAnioMensualmente(self, CiudadDestino, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "MONTH(ine_datos.fecha) AS MES, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Hoteles' "+
+                        ") AND ine_defserie_variables.var_103 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, Anio, Anio))  
+        return self.cursor     
+         
+                  
+    def ObtenerCantidadPersonasHotelHaciaCiudadDestinoEnRangoAnios(self, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Hoteles' "+
+                        ") AND ine_defserie_variables.var_103 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor     
+         
+    def ObtenerCantidadPersonasHotelHaciaCiudadDestinoEnRangoAniosEnMes(self, CiudadDestino, AnioInicio, AnioFin, Mes):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Hoteles' "+
+                        ") AND ine_defserie_variables.var_103 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND MONTH(ine_datos.fecha) = %s AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin, Mes))  
+        return self.cursor     
+    
+    def ObtenerCantidadPersonasHotelHaciaCiudadDestinoEnRangoAniosMensualmente(self, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "MONTH(ine_datos.fecha) AS MES, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Hoteles' "+
+                        ") AND ine_defserie_variables.var_103 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor  
+    
+    
+    
+        ######################################################################## RESIDENCIA ###################################################################################
+    
+    def ObtenerCantidadPersonasResidenciasHaciaCiudadDestinoEnAnio(self, CiudadDestino, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Turismo Rural' "+
+                        ") AND ine_defserie_variables.var_115 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, Anio, Anio))  
+        return self.cursor     
+         
+                  
+         
+         
+         
+    def ObtenerCantidadPersonasResidenciasHaciaCiudadDestinoEnAnioMensualmente(self, CiudadDestino, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "MONTH(ine_datos.fecha) AS MES, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Turismo Rural' "+
+                        ") AND ine_defserie_variables.var_115 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, Anio, Anio))  
+        return self.cursor     
+         
+                  
+    def ObtenerCantidadPersonasResidenciasHaciaCiudadDestinoEnRangoAnios(self, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Turismo Rural' "+
+                        ") AND ine_defserie_variables.var_115 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor     
+         
+    def ObtenerCantidadPersonasResidenciasHaciaCiudadDestinoEnRangoAniosEnMes(self, CiudadDestino, AnioInicio, AnioFin, Mes):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Turismo Rural' "+
+                        ") AND ine_defserie_variables.var_115 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND MONTH(ine_datos.fecha) = %s AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO"
+                                        )
+        Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin, Mes))  
+        return self.cursor     
+    
+    def ObtenerCantidadPersonasResidenciasHaciaCiudadDestinoEnRangoAniosMensualmente(self, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = ("SELECT "+
+                            "YEAR(ine_datos.fecha) AS AÑO, "+
+                            "MONTH(ine_datos.fecha) AS MES, "+
+                            "SUM(ine_datos.valor) AS CANTIDAD "+
+                        "FROM"+
+                        "    ine_datos "+
+                        "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                        "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                        "WHERE "+
+                        "    cod_operacion =( "+
+                        "    SELECT "+
+                        "        id "+
+                        "    FROM "+
+                        "        ine_operaciones "+
+                        "    WHERE NAME "+
+                        "        = 'Turismo Rural' "+
+                        ") AND ine_defserie_variables.var_115 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                        "    ine_valores_variables "+
+                        "WHERE NAME = "+
+                        "    %s "+
+                        ") AND unidad = '213' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s  "+
+                        "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_94 = '9834' AND ine_defserie.name = 'Viajeros' "+
+                        "GROUP BY "+
+                        "    AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor  
+    
+    
+    
+    
+    
+    
 ##################################################################################################################################################################################################################################################################
 ##################################################################################################################PORCENTAJE DE OCUPACION DE PARCELAS EN FIN DE SEMANA EN CIUDAD#################################################################################################################################
 ##################################################################################################################################################################################################################################################################

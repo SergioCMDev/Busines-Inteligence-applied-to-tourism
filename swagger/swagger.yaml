@@ -4176,193 +4176,8 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/Operaciones/ObtenerCantidadTotalPersonasEnHotelDesdeCiudadEnAnio/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ van a hoteles desde esa ciudad de forma total"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que van a hoteles desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_total_personas_en_hotel_desde_ciudad_en_anio"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnHotelDesdeCiudadEnAnioMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ van a hoteles desde esa ciudad de forma total"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que van a hoteles desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_en_anio_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnHotelDesdeCiudadEnRangoAnios/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a hoteles desde esa ciudad de forma total"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a hoteles desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_en_rango_anios"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnHotelDesdeCiudadEnRangoAniosMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a hoteles desde esa ciudad de forma mensual"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a hoteles desde esa ciudad de forma mensual"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_en_rango_anios_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnHotelDesdeCiudadEnRangoAniosEnMes/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a hoteles desde esa ciudad de forma mensual"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a hoteles desde esa ciudad de forma mensual"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_en_rango_anios_en_mes"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      - name: "Mes"
-        in: "query"
-        description: "Mes"
-        required: true
-        type: "string"
-        default: "Enero"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
+   
+
   /INE/Operaciones/ObtenerCantidadTotalPersonasEnHotelHaciaCiudadEnAnio/{CiudadDestino}:
     get:
       tags:
@@ -4381,7 +4196,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "Anio"
         in: "query"
         description: "Anio"
@@ -4413,7 +4228,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "Anio"
         in: "query"
         description: "Anio"
@@ -4445,7 +4260,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "AnioInicio"
         in: "query"
         description: "Anio Inicio"
@@ -4484,7 +4299,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "AnioInicio"
         in: "query"
         description: "Anio inicio"
@@ -4523,7 +4338,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "AnioInicio"
         in: "query"
         description: "Anio inicio"
@@ -4550,420 +4365,12 @@ paths:
         400:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnHotelDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAnios/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino y un rango de años obtiene\
-        \ la cantidad total de personas que van a hoteles de la ciudad destino desde\
-        \ la ciudad origen durante ese rango de años"
-      description: "Dado una ciudad origen, una ciudad destino y un rango de años\
-        \ obtiene la cantidad total de personas que van a hoteles de la ciudad destino\
-        \ desde la ciudad origen durante ese rango de años"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnHotelDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAniosMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino y un rango de años obtiene\
-        \ la cantidad total de personas que van a hoteles de la ciudad destino desde\
-        \ la ciudad origen durante un rango de años  de forma mensual"
-      description: "Dado una ciudad origen, una ciudad destino y un rango de años\
-        \ obtiene la cantidad total de personas que van a hoteles de la ciudad destino\
-        \ desde la ciudad origen durante un rango de años de forma mensual"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnHotelDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAniosEnMes/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un mes y un rango de añ\
-        os obtiene la cantidad total de personas que van a hoteles de la ciudad destino\
-        \ desde la ciudad origen durante un rango de años durante un mes"
-      description: "Dado una ciudad origen, una ciudad destino, un mes y un rango\
-        \ de años obtiene la cantidad total de personas que van a hoteles de la ciudad\
-        \ destino desde la ciudad origen durante un rango de años durante un mes"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios_en_mes"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      - name: "Mes"
-        in: "query"
-        description: "Mes"
-        required: true
-        type: "string"
-        default: "Enero"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnHotelDesdeCiudadOrigenHaciaCiudadDestinoEnAnioMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad\
-        \ total de personas que van a hoteles de la ciudad destino desde la ciudad\
-        \ origen durante ese año de forma mensual"
-      description: "Dado una ciudad origen, una ciudad destino, un año obtiene la\
-        \ cantidad total de personas que van a hoteles de la ciudad destino desde\
-        \ la ciudad origen durante ese año de forma mensual"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_origen_hacia_ciudad_destino_en_anio_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadTotalPersonasEnHotelDesdeCiudadOrigenHaciaCiudadDestinoEnAnio/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad\
-        \ total de personas que van a hoteles de la ciudad destino desde la ciudad\
-        \ origen durante ese año"
-      description: "Dado una ciudad origen, una ciudad destino, un año obtiene la\
-        \ cantidad total de personas que van a hoteles de la ciudad destino desde\
-        \ la ciudad origen durante ese año"
-      operationId: "obtener_cantidad_personas_en_hotel_desde_ciudad_origen_hacia_ciudad_destino_en_anio"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadTotalPersonasEnCampingDesdeCiudadEnAnio/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ van a campings desde esa ciudad de forma total"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que van a campings desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_total_personas_en_camping_desde_ciudad_en_anio"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnDesdeCiudadEnAnioMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ van a campings desde esa ciudad de forma total"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que van a campings desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_en_anio_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnCampingDesdeCiudadEnRangoAnios/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a campings desde esa ciudad de forma total"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a campings desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_en_rango_anios"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnCampingDesdeCiudadEnRangoAniosMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a campings desde esa ciudad de forma mensual"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a campings desde esa ciudad de forma mensual"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_en_rango_anios_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnCampingDesdeCiudadEnRangoAniosEnMes/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a campings desde esa ciudad de forma mensual"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a campings desde esa ciudad de forma mensual"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_en_rango_anios_en_mes"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      - name: "Mes"
-        in: "query"
-        description: "Mes"
-        required: true
-        type: "string"
-        default: "Enero"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
+  
+  
+  
+  
+ 
+ 
   /INE/Operaciones/ObtenerCantidadTotalPersonasEnCampingHaciaCiudadEnAnio/{CiudadDestino}:
     get:
       tags:
@@ -4982,7 +4389,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "Anio"
         in: "query"
         description: "Anio"
@@ -5014,7 +4421,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "Anio"
         in: "query"
         description: "Anio"
@@ -5046,7 +4453,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "AnioInicio"
         in: "query"
         description: "Anio Inicio"
@@ -5085,7 +4492,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "AnioInicio"
         in: "query"
         description: "Anio inicio"
@@ -5124,7 +4531,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Benidorm"
       - name: "AnioInicio"
         in: "query"
         description: "Anio inicio"
@@ -5151,420 +4558,11 @@ paths:
         400:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnCampingDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAnios/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino y un rango de años obtiene\
-        \ la cantidad total de personas que van a campings de la ciudad destino desde\
-        \ la ciudad origen durante ese rango de años"
-      description: "Dado una ciudad origen, una ciudad destino y un rango de años\
-        \ obtiene la cantidad total de personas que van a campings de la ciudad destino\
-        \ desde la ciudad origen durante ese rango de años"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnCampingDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAniosMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino y un rango de años obtiene\
-        \ la cantidad total de personas que van a campings de la ciudad destino desde\
-        \ la ciudad origen durante un rango de años  de forma mensual"
-      description: "Dado una ciudad origen, una ciudad destino y un rango de años\
-        \ obtiene la cantidad total de personas que van a campings de la ciudad destino\
-        \ desde la ciudad origen durante un rango de años de forma mensual"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnCampingDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAniosEnMes/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un mes y un rango de añ\
-        os obtiene la cantidad total de personas que van a campings de la ciudad destino\
-        \ desde la ciudad origen durante un rango de años durante un mes"
-      description: "Dado una ciudad origen, una ciudad destino, un mes y un rango\
-        \ de años obtiene la cantidad total de personas que van a campings de la ciudad\
-        \ destino desde la ciudad origen durante un rango de años durante un mes"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios_en_mes"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      - name: "Mes"
-        in: "query"
-        description: "Mes"
-        required: true
-        type: "string"
-        default: "Enero"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnCampingDesdeCiudadOrigenHaciaCiudadDestinoEnAnioMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad\
-        \ total de personas que van a campings de la ciudad destino desde la ciudad\
-        \ origen durante ese año de forma mensual"
-      description: "Dado una ciudad origen, una ciudad destino, un año obtiene la\
-        \ cantidad total de personas que van a campings de la ciudad destino desde\
-        \ la ciudad origen durante ese año de forma mensual"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_origen_hacia_ciudad_destino_en_anio_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadTotalPersonasEnCampingDesdeCiudadOrigenHaciaCiudadDestinoEnAnio/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad\
-        \ total de personas que van a campings de la ciudad destino desde la ciudad\
-        \ origen durante ese año"
-      description: "Dado una ciudad origen, una ciudad destino, un año obtiene la\
-        \ cantidad total de personas que van a campings de la ciudad destino desde\
-        \ la ciudad origen durante ese año"
-      operationId: "obtener_cantidad_personas_en_camping_desde_ciudad_origen_hacia_ciudad_destino_en_anio"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadTotalPersonasEnResidenciaDesdeCiudadEnAnio/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ van a residencias desde esa ciudad de forma total"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que van a residencias desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_total_personas_en_residencias_desde_ciudad_en_anio"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnResidenciaDesdeCiudadEnAnioMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ van a residencias desde esa ciudad de forma total"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que van a residencias desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_en_anio_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnResidenciaDesdeCiudadEnRangoAnios/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a residencias desde esa ciudad de forma total"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a residencias desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_en_rango_anios"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnResidenciaDesdeCiudadEnRangoAniosMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a residencias desde esa ciudad de forma mensual"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a residencias desde esa ciudad de forma mensual"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_en_rango_anios_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnResidenciaDesdeCiudadEnRangoAniosEnMes/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a residencias desde esa ciudad de forma mensual"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a residencias desde esa ciudad de forma mensual"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_en_rango_anios_en_mes"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      - name: "Mes"
-        in: "query"
-        description: "Mes"
-        required: true
-        type: "string"
-        default: "Enero"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
+ 
+ 
+  
+ 
+  
   /INE/Operaciones/ObtenerCantidadTotalPersonasEnResidenciaHaciaCiudadEnAnio/{CiudadDestino}:
     get:
       tags:
@@ -5583,7 +4581,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Alicante"
       - name: "Anio"
         in: "query"
         description: "Anio"
@@ -5615,7 +4613,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Alicante"
       - name: "Anio"
         in: "query"
         description: "Anio"
@@ -5647,7 +4645,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Alicante"
       - name: "AnioInicio"
         in: "query"
         description: "Anio Inicio"
@@ -5686,7 +4684,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Alicante"
       - name: "AnioInicio"
         in: "query"
         description: "Anio inicio"
@@ -5725,7 +4723,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Alicante"
       - name: "AnioInicio"
         in: "query"
         description: "Anio inicio"
@@ -5752,421 +4750,8 @@ paths:
         400:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnResidenciaDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAnios/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino y un rango de años obtiene\
-        \ la cantidad total de personas que van a residencias de la ciudad destino\
-        \ desde la ciudad origen durante ese rango de años"
-      description: "Dado una ciudad origen, una ciudad destino y un rango de años\
-        \ obtiene la cantidad total de personas que van a residencias de la ciudad\
-        \ destino desde la ciudad origen durante ese rango de años"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnResidenciaDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAniosMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino y un rango de años obtiene\
-        \ la cantidad total de personas que van a residencias de la ciudad destino\
-        \ desde la ciudad origen durante un rango de años  de forma mensual"
-      description: "Dado una ciudad origen, una ciudad destino y un rango de años\
-        \ obtiene la cantidad total de personas que van a residencias de la ciudad\
-        \ destino desde la ciudad origen durante un rango de años de forma mensual"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnResidenciaDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAniosEnMes/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un mes y un rango de añ\
-        os obtiene la cantidad total de personas que van a residencias de la ciudad\
-        \ destino desde la ciudad origen durante un rango de años durante un mes"
-      description: "Dado una ciudad origen, una ciudad destino, un mes y un rango\
-        \ de años obtiene la cantidad total de personas que van a residencias de la\
-        \ ciudad destino desde la ciudad origen durante un rango de años durante un\
-        \ mes"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios_en_mes"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      - name: "Mes"
-        in: "query"
-        description: "Mes"
-        required: true
-        type: "string"
-        default: "Enero"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnResidenciaDesdeCiudadOrigenHaciaCiudadDestinoEnAnioMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad\
-        \ total de personas que van a residencias de la ciudad destino desde la ciudad\
-        \ origen durante ese año de forma mensual"
-      description: "Dado una ciudad origen, una ciudad destino, un año obtiene la\
-        \ cantidad total de personas que van a residencias de la ciudad destino desde\
-        \ la ciudad origen durante ese año de forma mensual"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_origen_hacia_ciudad_destino_en_anio_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadTotalPersonasEnResidenciaDesdeCiudadOrigenHaciaCiudadDestinoEnAnio/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad\
-        \ total de personas que van a residencias de la ciudad destino desde la ciudad\
-        \ origen durante ese año"
-      description: "Dado una ciudad origen, una ciudad destino, un año obtiene la\
-        \ cantidad total de personas que van a residencias de la ciudad destino desde\
-        \ la ciudad origen durante ese año"
-      operationId: "obtener_cantidad_personas_en_residencias_desde_ciudad_origen_hacia_ciudad_destino_en_anio"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadTotalPersonasEnApartamentosTuristicosDesdeCiudadEnAnio/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ van a apartamentos turisticos desde esa ciudad de forma total"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que van a apartamentos turisticos desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_total_personas_en_apartamentos_turisticos_desde_ciudad_en_anio"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnApartamentosTuristicosDesdeCiudadEnAnioMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ van a apartamentos turisticos desde esa ciudad de forma total"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que van a apartamentos turisticos desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_en_anio_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnApartamentosTuristicosDesdeCiudadEnRangoAnios/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a apartamentos turisticos desde esa ciudad de forma total"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a apartamentos turisticos desde esa ciudad de forma total"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_en_rango_anios"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnApartamentosTuristicosDesdeCiudadEnRangoAniosMensualmente/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a apartamentos turisticos desde esa ciudad de forma mensual"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a apartamentos turisticos desde esa ciudad de forma mensual"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_en_rango_anios_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnApartamentosTuristicosDesdeCiudadEnRangoAniosEnMes/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
-        \ que van a apartamentos turisticos desde esa ciudad de forma mensual"
-      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
-        \ personas que van a apartamentos turisticos desde esa ciudad de forma mensual"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_en_rango_anios_en_mes"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio Inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      - name: "Mes"
-        in: "query"
-        description: "Mes"
-        required: true
-        type: "string"
-        default: "Enero"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
+  
+ 
   /INE/Operaciones/ObtenerCantidadTotalPersonasEnApartamentosTuristicosHaciaCiudadEnAnio/{CiudadDestino}:
     get:
       tags:
@@ -6185,7 +4770,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Roquetas de Mar"
       - name: "Anio"
         in: "query"
         description: "Anio"
@@ -6217,7 +4802,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Roquetas de Mar"
       - name: "Anio"
         in: "query"
         description: "Anio"
@@ -6249,13 +4834,20 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
-      - name: "Anio"
+        default: "Roquetas de Mar"
+      - name: "AnioInicio"
         in: "query"
-        description: "Anio"
+        description: "Anio Inicio"
         required: true
         type: "integer"
         default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio fin"
+        required: true
+        type: "integer"
+        default: 2005
         format: "int64"
       responses:
         200:
@@ -6281,7 +4873,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Roquetas de Mar"
       - name: "AnioInicio"
         in: "query"
         description: "Anio inicio"
@@ -6320,7 +4912,7 @@ paths:
         description: "Ciudad destino"
         required: true
         type: "string"
-        default: "Madrid"
+        default: "Roquetas de Mar"
       - name: "AnioInicio"
         in: "query"
         description: "Anio inicio"
@@ -6347,230 +4939,8 @@ paths:
         400:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadPersonasEnApartamentosTuristicosDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAnios/{CiudadOrigen}:
-    get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino y un rango de años obtiene\
-        \ la cantidad total de personas que van a apartamentos turisticos de la ciudad\
-        \ destino desde la ciudad origen durante ese rango de años"
-      description: "Dado una ciudad origen, una ciudad destino y un rango de años\
-        \ obtiene la cantidad total de personas que van a apartamentos turisticos\
-        \ de la ciudad destino desde la ciudad origen durante ese rango de años"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  ? /INE/Operaciones/ObtenerCantidadPersonasEnApartamentosTuristicosDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAniosMensualmente/{CiudadOrigen}
-  : get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino y un rango de años obtiene\
-        \ la cantidad total de personas que van a apartamentos turisticos de la ciudad\
-        \ destino desde la ciudad origen durante un rango de años  de forma mensual"
-      description: "Dado una ciudad origen, una ciudad destino y un rango de años\
-        \ obtiene la cantidad total de personas que van a apartamentos turisticos\
-        \ de la ciudad destino desde la ciudad origen durante un rango de años de\
-        \ forma mensual"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  ? /INE/Operaciones/ObtenerCantidadPersonasEnApartamentosTuristicosDesdeCiudadOrigenHaciaCiudadDestinoEnRangoAniosEnMes/{CiudadOrigen}
-  : get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un mes y un rango de añ\
-        os obtiene la cantidad total de personas que van a apartamentos turisticos\
-        \ de la ciudad destino desde la ciudad origen durante un rango de años durante\
-        \ un mes"
-      description: "Dado una ciudad origen, una ciudad destino, un mes y un rango\
-        \ de años obtiene la cantidad total de personas que van a apartamentos turisticos\
-        \ de la ciudad destino desde la ciudad origen durante un rango de años durante\
-        \ un mes"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_origen_hacia_ciudad_destino_en_rango_anios_en_mes"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "AnioInicio"
-        in: "query"
-        description: "Anio inicio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      - name: "AnioFin"
-        in: "query"
-        description: "Anio Fin"
-        required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  ? /INE/Operaciones/ObtenerCantidadPersonasEnApartamentosTuristicosDesdeCiudadOrigenHaciaCiudadDestinoEnAnioMensualmente/{CiudadOrigen}
-  : get:
-      tags:
-      - "Operaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad\
-        \ total de personas que van a apartamentos turisticos de la ciudad destino\
-        \ desde la ciudad origen durante ese año de forma mensual"
-      description: "Dado una ciudad origen, una ciudad destino, un año obtiene la\
-        \ cantidad total de personas que van a apartamentos turisticos de la ciudad\
-        \ destino desde la ciudad origen durante ese año de forma mensual"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_origen_hacia_ciudad_destino_en_anio_mensualmente"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.operaciones ine_controller"
-  /INE/Operaciones/ObtenerCantidadTotalPersonasEnApartamentosTuristicosDesdeCiudadOrigenHaciaCiudadDestinoEnAnio/{CiudadOrigen}:
-    get:
-      tags:
-      - "Pernoctaciones INE"
-      summary: "Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad\
-        \ total de personas que van a apartamentos turisticos de la ciudad destino\
-        \ desde la ciudad origen durante ese año"
-      description: "Dado una ciudad origen, una ciudad destino, un año obtiene la\
-        \ cantidad total de personas que van a apartamentos turisticos de la ciudad\
-        \ destino desde la ciudad origen durante ese año"
-      operationId: "obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_origen_hacia_ciudad_destino_en_anio"
-      produces:
-      - "application/xml"
-      - "application/json"
-      parameters:
-      - name: "CiudadOrigen"
-        in: "path"
-        description: "Ciudad origen"
-        required: true
-        type: "string"
-        default: "Madrid"
-      - name: "CiudadDestino"
-        in: "query"
-        description: "Ciudad destino"
-        required: true
-        type: "string"
-        default: "Málaga"
-      - name: "Anio"
-        in: "query"
-        description: "Anio"
-        required: true
-        type: "integer"
-        default: 2002
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid country value"
-      x-swagger-router-controller: "swagger_server.controllers.pernoctaciones ine_controller"
+  
+  
   /INE/Pernotaciones/ObtenerCantidadTotalPernoctacionesEnCiudadEnAnio/{Ciudad}:
     get:
       tags:
