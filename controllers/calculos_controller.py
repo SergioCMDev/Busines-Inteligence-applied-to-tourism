@@ -34,17 +34,28 @@ def obtener_outliers_ciudad_cantidad(ciudadInicioIniciales, CiudadFinIniciales, 
     :rtype: Dict[str, int]
     """
     if connexion.request.is_json:
-        body = [Body5.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body3.from_dict(d) for d in connexion.request.get_json()]
         listaLabels = list()
         listaLabels.append('Ciudad')
         listaLabels.append('Cantidad')
         listaValores, listaValoresAComprobar, listaValoresCentrales = conversor.separarValoresBody(body, CiudadFinIniciales)
+#        print('Lista VALORES')
 #        print(listaValores)
 #        print("\n")
+#        
+#        print('Lista VALORES A COMPROBAR')
 #        print(listaValoresAComprobar)
+#        
+#        print('Lista LABELS')
+#        print(listaLabels)
+        
         matriz, listaColumnas =  conversor.ConvertirTuplasToMatriz(listaValores, listaLabels)
+#        print('MATRIZ')
 #        print(matriz)
+#        
 #        print("\n")
+#        
+#        print('Lista COLUMNAS')
 #        print(listaColumnas)
         
         listaValoresOutliers, listaValoresInliers = outliers.ObtenerOutliersDadaMatrizAniosYTipo(matriz, ciudadInicioIniciales, CiudadFinIniciales, listaValoresAComprobar, listaLabels, Metodo)
@@ -83,7 +94,7 @@ def obtener_outliers_inliers_anios_cantidad(AnioInicio, AnioFin, Metodo,  body):
     :rtype: Dict[str, int]
     """
     if connexion.request.is_json:
-        body = [Body.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body1.from_dict(d) for d in connexion.request.get_json()]
 
         listaLabels = list()
         listaLabels.append('Anio')
@@ -124,7 +135,7 @@ def obtener_outliers_pais_cantidad(PaisInicioIniciales, PaisFinIniciales, Metodo
     :rtype: Dict[str, int]
     """
     if connexion.request.is_json:
-        body = [Body6.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body4.from_dict(d) for d in connexion.request.get_json()]
         listaLabels = list()
         listaLabels.append('Pais')
         listaLabels.append('Cantidad')
@@ -160,7 +171,7 @@ def obtener_outliers_inliers_mes_cantidad(MesInicioIniciales, MesFinIniciales, M
     :rtype: Dict[str, int]
     """
     if connexion.request.is_json:
-        body = [Body4.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body2.from_dict(d) for d in connexion.request.get_json()]
         listaLabels = list()
         listaLabels.append('Mes')
         listaLabels.append('Cantidad')
@@ -196,7 +207,7 @@ def obtener_outliers_inliers_anios_pais_cantidad(AnioInicio, AnioFin, Metodo, bo
     :rtype: Dict[str, int]
     """
     if connexion.request.is_json:
-        body = [Body2.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body5.from_dict(d) for d in connexion.request.get_json()]
         listaLabels = list()
         listaLabels.append('Anio')
         listaLabels.append('Pais')
@@ -235,7 +246,7 @@ def obtener_outliers_inliers_anios_mes_cantidad(AnioInicio, AnioFin, Metodo,  bo
     """
 
     if connexion.request.is_json:
-        body = [Body1.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body7.from_dict(d) for d in connexion.request.get_json()]
         listaLabels = list()
         listaLabels.append('Anio')
         listaLabels.append('Mes')
@@ -273,7 +284,7 @@ def obtener_outliers_inliers_anios_ciudad_cantidad(AnioInicio, AnioFin, Metodo, 
     :rtype: Dict[str, int]
     """
     if connexion.request.is_json:
-        body = [Body3.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body6.from_dict(d) for d in connexion.request.get_json()]
 #        print(body)
         listaLabels = list()
         listaLabels.append('Anio')
@@ -323,7 +334,7 @@ def obtener_progresion_lineal(AnioPrediccion, body):
     """
     prediccionCantidad = -1
     if connexion.request.is_json:
-        body = [Body7.from_dict(d) for d in connexion.request.get_json()]
+        body = [Body1.from_dict(d) for d in connexion.request.get_json()]
         lista = list()
         
         print(body)

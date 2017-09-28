@@ -167,12 +167,11 @@ class Conversores:
 
 
     def ConvertirTuplasToMatriz(self, tuplas, labels):
-        print(labels)
         tuplasMatriz = DataFrame(tuplas, columns = labels)
 #        print("TUPLAS")
 #        print(tuplasMatriz)
         matriz, lista = matrix.ObtenerMatrizDatos(tuplasMatriz, labels)
-#        print(tuplasMatriz)
+        
         return matriz, lista
 
     def json_numpy_obj_hook(self, dct):
