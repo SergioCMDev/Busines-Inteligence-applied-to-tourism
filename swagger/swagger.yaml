@@ -4977,10 +4977,10 @@ paths:
     get:
       tags:
       - "Pernoctaciones INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
-        \ pernoctan en dicha ciudad en ese año dividido por meses"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
-        \ que pernoctan en dicha ciudad en ese año dividido por meses"
+      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas que\
+        \ pernoctan en dicha ciudad en ese rango de años dividido por meses"
+      description: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
+        \ que pernoctan en dicha ciudad en ese rango de años dividido por meses"
       operationId: "obtener_cantidad_total_pernoctaciones_en_ciudad_en_anio_mensualmente"
       produces:
       - "application/xml"
@@ -4998,6 +4998,47 @@ paths:
         required: true
         type: "integer"
         default: 2002
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.pernoctaciones ine_controller"
+
+
+  /INE/Pernotaciones/ObtenerCantidadTotalPernoctacionesEnCiudadEnRangoAniosMensualmente/{Ciudad}:
+    get:
+      tags:
+      - "Pernoctaciones INE"
+      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas que\
+        \ pernoctan en dicha ciudad en ese rango de años dividido por meses"
+      description: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
+        \ que pernoctan en dicha ciudad en ese rango de años dividido por meses"
+      operationId: "obtener_cantidad_total_pernoctaciones_en_ciudad_en_rango_anios_mensualmente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2008
         format: "int64"
       responses:
         200:
@@ -5165,6 +5206,47 @@ paths:
         \ de la cantidad total de personas que pernoctan en dicha ciudad en esos añ\
         os"
       operationId: "obtener_cantidad_porcentaje_pernoctaciones_en_ciudad_en_rango_anios"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Año Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Año Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.pernoctaciones ine_controller"
+
+  /INE/Pernotaciones/ObtenerCantidadPorcentajePernoctacionesEnCiudadEnRangoAniosMensualmente/{Ciudad}:
+    get:
+      tags:
+      - "Pernoctaciones INE"
+      summary: "Dado una ciudad y un rango de años obtiene el tanto por ciento de\
+        \ la cantidad total de personas que pernoctan en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene el tanto por ciento\
+        \ de la cantidad total de personas que pernoctan en dicha ciudad en esos añ\
+        os mensualmente"
+      operationId: "obtener_cantidad_porcentaje_pernoctaciones_en_ciudad_en_rango_anios_mensualmente"
       produces:
       - "application/xml"
       - "application/json"

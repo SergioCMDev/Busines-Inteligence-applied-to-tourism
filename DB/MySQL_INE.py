@@ -1820,6 +1820,244 @@ class MySQLAccessINE:
         return self.cursor  
     
     
+ ##################################################################################################################################################################################################################################################################
+##################################################################################################################PERNOCTACIONES EN CIUDAD#################################################################################################################################
+##################################################################################################################################################################################################################################################################
+     
+    def ObtenerPorcentajePernoctacionesEnCiudadEnAnio( self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                 "   YEAR(ine_datos.fecha), "+
+                  "  AVG(ine_datos.valor) "+
+                "FROM "+
+                 "   ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                "    ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "JOIN ine_valores_variables ine_valores_variables96 ON "+
+                 "   ine_defserie_variables.var_96 = ine_valores_variables96.id "+
+                "WHERE "+
+                 "ine_defserie.name = 'Pernoctaciones' AND ine_valores_variables115.name LIKE %s "+
+                 "AND ine_valores_variables96.name LIKE 'Galicia' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                "GROUP BY "+
+                 "   YEAR(ine_datos.fecha)"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor  
+    
+    def ObtenerPorcentajePernoctacionesEnCiudadEnAnioMensualmente(self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                 "   YEAR(ine_datos.fecha) AS AÑO, "+
+                  "  MONTH(ine_datos.fecha) AS MES, "+
+                   " ine_datos.valor "+
+                "FROM "+
+                 "   ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                 "   ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "JOIN ine_valores_variables ine_valores_variables96 ON "+
+                 "   ine_defserie_variables.var_96 = ine_valores_variables96.id "+
+                "WHERE "+
+                 "   ine_defserie.name = 'Pernoctaciones' AND ine_valores_variables115.name LIKE %s  "+
+                 " AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                "GROUP BY "+
+             "   AÑO,  MES "
+                                        )
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor  
+    
+    def ObtenerPorcentajePernoctacionesEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                 "   YEAR(ine_datos.fecha) AS AÑO, "+
+                  "  MONTH(ine_datos.fecha) AS MES, "+
+                   " ine_datos.valor "+
+                "FROM "+
+                 "   ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                 "   ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "JOIN ine_valores_variables ine_valores_variables96 ON "+
+                 "   ine_defserie_variables.var_96 = ine_valores_variables96.id "+
+                "WHERE "+
+                 "   ine_defserie.name = 'Pernoctaciones' AND ine_valores_variables115.name LIKE %s  "+
+                 " AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                "GROUP BY "+
+             "   AÑO,  MES "
+                                        )
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin))  
+        return self.cursor  
+    
+    def ObtenerPorcentajePernoctacionesEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                 "   YEAR(ine_datos.fecha), "+
+                  "  AVG(ine_datos.valor) "+
+                "FROM "+
+                 "   ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                "    ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "JOIN ine_valores_variables ine_valores_variables96 ON "+
+                 "   ine_defserie_variables.var_96 = ine_valores_variables96.id "+
+                "WHERE "+
+                 "ine_defserie.name = 'Pernoctaciones' AND ine_valores_variables115.name LIKE %s "+
+                 " AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                "GROUP BY "+
+                 "   YEAR(ine_datos.fecha)"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin))  
+        return self.cursor  
+      
+    def ObtenerPorcentajePernoctacionesEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                 "   YEAR(ine_datos.fecha), "+
+                  "  AVG(ine_datos.valor) "+
+                "FROM "+
+                 "   ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                "    ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "JOIN ine_valores_variables ine_valores_variables96 ON "+
+                 "   ine_defserie_variables.var_96 = ine_valores_variables96.id "+
+                "WHERE "+
+                 "ine_defserie.name = 'Pernoctaciones' AND ine_valores_variables115.name LIKE %s "+
+                 " AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND MONTH(ine_datos.fecha) = %s"+
+                "GROUP BY "+
+                 "   YEAR(ine_datos.fecha)"
+                                        )
+        Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin, Mes))  
+        return self.cursor 
+    
+        
+        
+        
+        
+    def ObtenerCantidadTotalPernoctacionesEnAnio(self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie.id = ine_defserie_variables.defserie_id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                    "ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Pernoctaciones' AND ine_defserie.unidad = '242' AND ine_valores_variables115.name LIKE %s "+
+                    "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 = '9975' "+
+                "GROUP BY "+
+                    "AÑO"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor
+  
+    def ObtenerCantidadTotalPernoctacionesEnAnioMensualmente(self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "MONTH(ine_datos.fecha) AS MES, "+
+                    "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie.id = ine_defserie_variables.defserie_id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                    "ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Pernoctaciones' AND ine_defserie.unidad = '242' AND ine_valores_variables115.name LIKE %s "+
+                    "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 = '9975' "+
+                "GROUP BY "+
+                    "AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor
+    
+    
+    def ObtenerCantidadTotalPernoctacionesEnRangoAnios(self, Ciudad, anioInicio, anioFin):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie.id = ine_defserie_variables.defserie_id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                    "ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Pernoctaciones' AND ine_defserie.unidad = '242' AND ine_valores_variables115.name LIKE %s "+
+                    "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 = '9975' "+
+                "GROUP BY "+
+                    "AÑO"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin))  
+        return self.cursor
+    
+    def ObtenerCantidadTotalPernoctacionesEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "MONTH(ine_datos.fecha) AS MES, "+
+                    "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie.id = ine_defserie_variables.defserie_id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                    "ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Pernoctaciones' AND ine_defserie.unidad = '242' AND ine_valores_variables115.name LIKE %s "+
+                    "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 = '9975' "+
+                "GROUP BY "+
+                    "AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin))  
+        return self.cursor
+    
+    def ObtenerCantidadTotalPernoctacionesEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                 "   YEAR(ine_datos.fecha), "+
+                  "  AVG(ine_datos.valor) "+
+                "FROM "+
+                 "   ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                "    ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "JOIN ine_valores_variables ine_valores_variables96 ON "+
+                 "   ine_defserie_variables.var_96 = ine_valores_variables96.id "+
+                "WHERE "+
+                 "ine_defserie.name = 'Pernoctaciones' AND ine_valores_variables115.name LIKE %s "+
+                 "AND ine_valores_variables96.name LIKE 'Galicia' AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND MONTH(ine_datos.fecha) = %s"+
+                "GROUP BY "+
+                 "   YEAR(ine_datos.fecha)"
+                                        )
+        Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin, Mes))  
+        return self.cursor 
+    
+    
     
     
     

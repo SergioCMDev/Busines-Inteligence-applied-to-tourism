@@ -3,33 +3,6 @@ from ..Utilidades.Conversores import Conversores as Conversor
 
 
 
-def obtener_cantidad_personas_en_apartamentos_turisticos_desde_ciudad_origen_hacia_ciudad_destino_en_anio(CiudadOrigen, CiudadDestino, Anio):
-    """
-    Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad total de personas que van a apartamentos turisticos de la ciudad destino desde la ciudad origen durante ese año
-    Dado una ciudad origen, una ciudad destino, un año obtiene la cantidad total de personas que van a apartamentos turisticos de la ciudad destino desde la ciudad origen durante ese año
-    :param CiudadOrigen: Ciudad origen
-    :type CiudadOrigen: str
-    :param CiudadDestino: Ciudad destino
-    :type CiudadDestino: str
-    :param Anio: Anio
-    :type Anio: int
-
-    :rtype: None
-    """
-    conversor = Conversor()
-    repository = DBRepository()
-
-    cursor, labels = repository.ObtenerNumeroTotalPersonasEnApartamentosTuristicosDesdeCiudadOrigenHaciaCiudadDestinoEnAnio(CiudadOrigen,CiudadDestino, Anio)
-
-    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
-
-    ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
-    retval = conversor.ObtenerDataJSONExtendido(matriz)
-
-    return retval
-
-
 def obtener_cantidad_porcentaje_pernoctaciones_en_ciudad_en_anio(Ciudad, Anio):
     """
     Dado una ciudad y un año obtiene el tanto por ciento de la cantidad total de personas que pernoctan en dicha ciudad en ese año
@@ -49,7 +22,8 @@ def obtener_cantidad_porcentaje_pernoctaciones_en_ciudad_en_anio(Ciudad, Anio):
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -73,7 +47,8 @@ def obtener_cantidad_porcentaje_pernoctaciones_en_ciudad_en_anio_mensualmente(Ci
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -100,7 +75,38 @@ def obtener_cantidad_porcentaje_pernoctaciones_en_ciudad_en_rango_anios(Ciudad, 
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
+
+
+
+
+def obtener_cantidad_porcentaje_pernoctaciones_en_ciudad_en_rango_anios_mensualmente(Ciudad, AnioInicio, AnioFin):
+    """
+    Dado una ciudad y un rango de años obtiene el tanto por ciento de la cantidad total de personas que pernoctan en dicha ciudad en esos años mensualmente
+    Dado una ciudad y un rango de años obtiene el tanto por ciento de la cantidad total de personas que pernoctan en dicha ciudad en esos años mensualmente
+    :param Ciudad: Ciudad
+    :type Ciudad: str
+    :param AnioInicio: Año Inicio
+    :type AnioInicio: int
+    :param AnioFin: Año Fin
+    :type AnioFin: int
+
+    :rtype: None
+    """
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerPorcentajePernoctacionesEnCiudadEnRangoAniosMensualmente(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -128,7 +134,8 @@ def obtener_cantidad_porcentaje_pernoctaciones_en_ciudad_en_rango_anios_en_mes(C
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -153,7 +160,8 @@ def obtener_cantidad_total_pernoctaciones_en_ciudad_en_anio(Ciudad, Anio):
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -178,7 +186,33 @@ def obtener_cantidad_total_pernoctaciones_en_ciudad_en_anio_mensualmente(Ciudad,
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
+
+
+
+def obtener_cantidad_total_pernoctaciones_en_ciudad_en_rango_anios_mensualmente(Ciudad, AnioInicio, AnioFin):
+    """
+    Dado una ciudad y un año obtiene la cantidad total de personas que pernoctan en dicha ciudad en ese año dividido por meses
+    Dado una ciudad y un año obtiene la cantidad total de personas que pernoctan en dicha ciudad en ese año dividido por meses
+    :param Ciudad: Ciudad
+    :type Ciudad: str
+    :param Anio: Anio
+    :type Anio: int
+
+    :rtype: None
+    """
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerCantidadTotalPernoctacionesEnRangoAniosMensualmente(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -204,7 +238,8 @@ def obtener_cantidad_total_pernoctaciones_en_ciudad_en_rango_anios(Ciudad, AnioI
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -233,7 +268,8 @@ def obtener_cantidad_total_pernoctaciones_en_ciudad_en_rango_anios_en_mes(Ciudad
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval

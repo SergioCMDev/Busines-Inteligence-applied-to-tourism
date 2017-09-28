@@ -66,6 +66,7 @@ class RepositoryOperacionesINE():
         self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerCantidadPersonasCampingHaciaCiudadDestinoEnAnioMensualmente(CiudadDestino, str(Anio)), self.labels) 
   
+    
     def ObtenerCantidadPersonasCampingHaciaCiudadDestinoEnRangoAnios(self, CiudadDestino, AnioInicio, AnioFin):
         self.db = DBContext()
         self.labels   = ['Anio', 'Cantidad']
