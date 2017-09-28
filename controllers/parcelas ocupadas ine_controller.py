@@ -21,7 +21,7 @@ def obtener_cantidad_de_parcelas_ocupadas_en_ciudad_en_anio(Ciudad, Anio):
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -45,7 +45,7 @@ def obtener_cantidad_de_parcelas_ocupadas_en_ciudad_en_anio_mensualmente(Ciudad,
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, Anio, Anio)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
@@ -71,10 +71,38 @@ def obtener_cantidad_de_parcelas_ocupadas_en_ciudad_en_rango_anios(Ciudad, AnioI
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval
+
+
+def obtener_cantidad_de_parcelas_ocupadas_en_ciudad_en_rango_anios_mensualmente(Ciudad, AnioInicio, AnioFin):
+    """
+    Dado una ciudad y un rango de años obtiene la cantidad de parcelas ocupadas en dicha ciudad en esos años mensualmente
+    Dado una ciudad y un rango de años obtiene la cantidad de parcelas ocupadas en dicha ciudad en esos años mensualmente
+    :param Ciudad: Ciudad
+    :type Ciudad: str
+    :param AnioInicio: Anio Inicio
+    :type AnioInicio: int
+    :param AnioFin: Anio Fin
+    :type AnioFin: int
+
+    :rtype: None
+    """
+    conversor = Conversor()
+    repository = DBRepository()
+
+    cursor, labels = repository.ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAniosMensualmente(Ciudad, AnioInicio, AnioFin)
+
+    arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
+
+    ##Mostrar JSON Extendido
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
+    retval = conversor.ObtenerDataJSONExtendido(matriz)
+
+    return retval
+
 
 def obtener_cantidad_de_parcelas_ocupadas_en_ciudad_en_rango_anios_en_mes(Ciudad, AnioInicio, AnioFin, Mes):
     """
@@ -99,7 +127,7 @@ def obtener_cantidad_de_parcelas_ocupadas_en_ciudad_en_rango_anios_en_mes(Ciudad
     arrayTuplas =  conversor.ConvertirCursorToTuplas(cursor)
 
     ##Mostrar JSON Extendido
-    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels, AnioInicio, AnioFin)
+    matriz, lista = conversor.ConvertirTuplasToMatriz(arrayTuplas,  labels)
     retval = conversor.ObtenerDataJSONExtendido(matriz)
 
     return retval

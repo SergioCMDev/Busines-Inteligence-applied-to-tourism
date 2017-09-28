@@ -5427,6 +5427,46 @@ paths:
         400:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.personal empleado ine_controller"
+
+  /INE/PersonalEmpleado/ObtenerCantidadTotalPersonalEmpleadoEnCiudadEnRangoAniosMensualmente/{Ciudad}:
+    get:
+      tags:
+      - "Personal Empleado INE"
+      summary: "Dado una ciudad y un rango de años obtiene la cantidad total de personas\
+        \ empleadas en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene la cantidad total de\
+        \ personas empleadas en dicha ciudad en esos años mensualmente"
+      operationId: "obtener_cantidad_total_personal_empleado_en_ciudad_en_rango_anios_mensualmente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.personal empleado ine_controller"
   /INE/PersonalEmpleado/ObtenerCantidadTotalPersonalEmpleadoEnCiudadEnRangoAniosEnMes/{Ciudad}:
     get:
       tags:
@@ -7987,6 +8027,47 @@ paths:
       description: "Dado una ciudad y un rango de años obtiene la cantidad de parcelas\
         \ ocupadas en dicha ciudad en esos años"
       operationId: "obtener_cantidad_de_parcelas_ocupadas_en_ciudad_en_rango_anios"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "Ciudad"
+        in: "path"
+        description: "Ciudad"
+        required: true
+        type: "string"
+        default: "Madrid"
+      - name: "AnioInicio"
+        in: "query"
+        description: "Anio Inicio"
+        required: true
+        type: "integer"
+        default: 2002
+        format: "int64"
+      - name: "AnioFin"
+        in: "query"
+        description: "Anio Fin"
+        required: true
+        type: "integer"
+        default: 2004
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid country value"
+      x-swagger-router-controller: "swagger_server.controllers.parcelas ocupadas ine_controller"
+
+
+      /INE/ParcelasOcupadas/ObtenerCantidadTotalParcelasOcupadasEnCiudadEnRangoAniosMensualmente/{Ciudad}:
+    get:
+      tags:
+      - "Parcelas Ocupadas INE"
+      summary: "Dado una ciudad y un rango de años obtiene la cantidad de parcelas\
+        \ ocupadas en dicha ciudad en esos años mensualmente"
+      description: "Dado una ciudad y un rango de años obtiene la cantidad de parcelas\
+        \ ocupadas en dicha ciudad en esos años mensualmente"
+      operationId: "obtener_cantidad_de_parcelas_ocupadas_en_ciudad_en_rango_anios_mensualmente"
       produces:
       - "application/xml"
       - "application/json"

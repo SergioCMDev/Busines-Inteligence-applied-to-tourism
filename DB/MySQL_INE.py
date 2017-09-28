@@ -2059,9 +2059,130 @@ class MySQLAccessINE:
     
     
     
+  ##################################################################################################################################################################################################################################################################
+##################################################################################################################PERSONAL EMPLEADO EN CIUDAD#################################################################################################################################
+##################################################################################################################################################################################################################################################################
+    def ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnAnio( self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie.id = ine_defserie_variables.defserie_id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                    "ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Personal Empleado' AND ine_valores_variables115.name LIKE %s "+
+                    "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                "GROUP BY "+
+                    "AÑO"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor
+    
+    def ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "MONTH(ine_datos.fecha) AS MES, "+
+                    "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie.id = ine_defserie_variables.defserie_id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                    "ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Personal Empleado' AND ine_valores_variables115.name LIKE %s "+
+                    "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                "GROUP BY "+
+                    "AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor
+        
+    def ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie.id = ine_defserie_variables.defserie_id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                    "ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Personal Empleado' AND ine_valores_variables115.name LIKE %s "+
+                    "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                "GROUP BY "+
+                    "AÑO"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin))  
+        return self.cursor
+    def ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "MONTH(ine_datos.fecha) AS MES, "+
+                    "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie.id = ine_defserie_variables.defserie_id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                    "ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Personal Empleado' AND ine_valores_variables115.name LIKE %s  "+
+                    "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                "GROUP BY "+
+                    "AÑO, MES"
+                                        )
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin))  
+        return self.cursor
+    def ObtenerNumeroTotalPersonalEmpleadoEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                 "   YEAR(ine_datos.fecha), "+
+                  "  SUM(ine_datos.valor) "+
+                "FROM "+
+                 "   ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "JOIN ine_valores_variables ine_valores_variables115 ON "+
+                "    ine_defserie_variables.var_115 = ine_valores_variables115.id "+
+                "WHERE "+
+                 "ine_defserie.name = 'Personal Empleado' AND ine_valores_variables115.name LIKE %s "+
+                 "AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND MONTH(ine_datos.fecha) = %s"+
+                "GROUP BY "+
+                 "   YEAR(ine_datos.fecha)"
+                                        )
+        Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+        self.cursor.execute(self.query,(Ciudad, anioInicio, anioFin, Mes))  
+        return self.cursor 
     
     
-    
+##################################################################################################################################################################################################################################################################
+##################################################################################################################PORCENTAJE DE OCUPACION DE PARCELAS EN CIUDAD#################################################################################################################################
+##################################################################################################################################################################################################################################################################
+#    def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnAnio( self, Ciudad, Anio):
+#    def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
+#    def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
+#    def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+#    def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
+# 
+#    
+
+
+
+
 ##################################################################################################################################################################################################################################################################
 ##################################################################################################################PORCENTAJE DE OCUPACION DE PARCELAS EN FIN DE SEMANA EN CIUDAD#################################################################################################################################
 ##################################################################################################################################################################################################################################################################
@@ -2069,11 +2190,5 @@ class MySQLAccessINE:
      # def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnFinDeSemanaEnCiudadEnAnio( self, Ciudad, Anio):
      #     def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnFinDeSemanaEnCiudadEnAnio(self, Ciudad, anioInicio, anioFin):
      #                          def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnFinDeSemanaEnCiudadEnAnio(self, Ciudad, anioInicio, anioFin, Mes):
+
                                    
-##################################################################################################################################################################################################################################################################
-##################################################################################################################PORCENTAJE DE OCUPACION DE PARCELAS EN CIUDAD#################################################################################################################################
-##################################################################################################################################################################################################################################################################
-   # def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio( self, Ciudad, Anio):
-  #  def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
-  #  def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio(self, Ciudad, anioInicio, anioFin):
-  #  def ObtenerPorcentajeDelGradoDeOcupacionDeParcelasEnCiudadEnAnio(self, Ciudad, anioInicio, anioFin, Mes):

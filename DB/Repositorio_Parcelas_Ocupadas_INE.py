@@ -16,21 +16,26 @@ class RepositoryParcelasOcupadasINE():
 
     def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnAnio( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Pais_Origen','Ciudad_Origen','Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerNumeroTotalParcelasOcupadasEnCiudadEnAnio( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes','Pais_Origen','Ciudad_Origen', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerNumeroTotalParcelasOcupadasEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
+    
+    def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
+        self.db = DBContext()
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
+        return (self.db.ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAniosMensualmente( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
     
     def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
     
     def ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerNumeroTotalParcelasOcupadasEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   
