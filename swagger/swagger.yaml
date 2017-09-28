@@ -3295,7 +3295,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas entrantes\
         \ amadeus_controller"
-  /INE/TuristasSalientes/ObtenerCantidadTuristasDeCiudadRangoAniosMes/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTuristasDeCiudadRangoAniosMes/{Ciudad}:
     get:
       tags:
       - "Turistas Salientes INE"
@@ -3305,7 +3305,7 @@ paths:
       description: "Dado una ciudad, un rango de años y un mes obtiene la cantidad\
         \ total de personas que salen de esa ciudad de forma global durante esos añ\
         os en ese mismo mes"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_rango_anios_mes"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_rango_anios_mes"
       produces:
       - "application/xml"
       - "application/json"
@@ -3343,7 +3343,8 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerCantidadTuristasDeCiudadRangoAnios/{Ciudad}:
+
+  /INE/TuristasSalientes/ObtenerPorcentajeTuristasDeCiudadRangoAnios/{Ciudad}:
     get:
       tags:
       - "Turistas Salientes INE"
@@ -3352,7 +3353,7 @@ paths:
       description: "Dado una ciudad, un rango de años y un mes obtiene la cantidad\
         \ total de personas que salen de esa ciudad de forma total durante esos añ\
         os"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_rango_anios"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_rango_anios"
       produces:
       - "application/xml"
       - "application/json"
@@ -3384,7 +3385,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerCantidadTuristasDeCiudadRangoAniosMensualmente/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTuristasDeCiudadRangoAniosMensualmente/{Ciudad}:
     get:
       tags:
       - "Turistas Salientes INE"
@@ -3393,7 +3394,7 @@ paths:
       description: "Dado una ciudad, un rango de años y un mes obtiene la cantidad\
         \ total de personas que salen de esa ciudad de forma total durante esos añ\
         os mensualmente"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_rango_anios_mensualmente"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_rango_anios_mensualmente"
       produces:
       - "application/xml"
       - "application/json"
@@ -3425,7 +3426,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerCantidadTotalTuristasDeCiudadAnio/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTotalTuristasDeCiudadAnio/{Ciudad}:
     get:
       tags:
       - "Turistas Salientes INE"
@@ -3433,7 +3434,7 @@ paths:
         \ salen de esa ciudad de forma total durante ese año"
       description: "Dado una ciudad y un año obtiene la cantidad total de personas\
         \ que salen de esa ciudad de forma total durante ese año"
-      operationId: "obtener_cantidad_total_turistas_salientes_de_ciudad_anio"
+      operationId: "obtener_porcentaje_total_turistas_salientes_de_ciudad_anio"
       produces:
       - "application/xml"
       - "application/json"
@@ -3458,15 +3459,15 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerCantidadTuristasDeCiudadAnioMensualmente/{Ciudad}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTuristasDeCiudadAnioMensualmente/{Ciudad}:
     get:
       tags:
       - "Turistas Salientes INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
+      summary: "Dado una ciudad y un año obtiene el porcentaje total de personas que\
         \ salen de esa ciudad de forma total durante ese año de forma mensual"
       description: "Dado una ciudad y un año obtiene la cantidad total de personas\
         \ que salen de esa ciudad de forma total durante ese año de forma mensual"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_anio_mensualmente"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_anio_mensualmente"
       produces:
       - "application/xml"
       - "application/json"
@@ -3491,17 +3492,17 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerNumeroTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnAnioMensualmente/{CiudadOrigen}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnAnioMensualmente/{CiudadOrigen}:
     get:
       tags:
       - "Turistas Salientes INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
+      summary: "Dado una ciudad y un año obtiene el porcentaje total de personas que\
         \ salen de esa ciudad y van hacia ciudad destino de forma total durante ese\
         \ año de forma mensual"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
+      description: "Dado una ciudad y un año obtiene el porcentaje total de personas\
         \ que salen de esa ciudad y van hacia ciudad destino de forma total durante\
         \ ese año de forma mensual"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_anio_mensualmente"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_anio_mensualmente"
       produces:
       - "application/xml"
       - "application/json"
@@ -3532,7 +3533,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerNumeroTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAniosMensualmente/{CiudadOrigen}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAniosMensualmente/{CiudadOrigen}:
     get:
       tags:
       - "Turistas Salientes INE"
@@ -3542,7 +3543,7 @@ paths:
       description: "Dado una ciudad y un año obtiene la cantidad total de personas\
         \ que salen de esa ciudad y van hacia ciudad destino de forma total durante\
         \ esos años de forma anual"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_rango_anio_mensualmente"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_rango_anio_mensualmente"
       produces:
       - "application/xml"
       - "application/json"
@@ -3566,7 +3567,7 @@ paths:
         type: "integer"
         default: 2002
         format: "int64"
-      - name: "AnioFIn"
+      - name: "AnioFin"
         in: "query"
         description: "Anio Fin"
         required: true
@@ -3580,17 +3581,17 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerNumeroTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAniosEnMes/{CiudadOrigen}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAniosEnMes/{CiudadOrigen}:
     get:
       tags:
       - "Turistas Salientes INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
+      summary: "Dado una ciudad y un año obtiene el porcentaje total de personas que\
         \ salen de esa ciudad y van hacia ciudad destino de forma total durante esos\
         \ años de forma anual durante ese mes"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
+      description: "Dado una ciudad y un año obtiene el porcentaje total de personas\
         \ que salen de esa ciudad y van hacia ciudad destino de forma total durante\
         \ esos años de forma anual durante ese mes"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_rango_anio_en_mes"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_rango_anio_en_mes"
       produces:
       - "application/xml"
       - "application/json"
@@ -3625,9 +3626,8 @@ paths:
         in: "query"
         description: "Mes"
         required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
+        type: "string"
+        default: "Enero"
       responses:
         200:
           description: "successful operation"
@@ -4085,17 +4085,17 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas entrantes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerNumeroTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnAnio/{CiudadOrigen}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnAnio/{CiudadOrigen}:
     get:
       tags:
       - "Turistas Salientes INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
+      summary: "Dado una ciudad y un año obtiene el porcentaje total de personas que\
         \ salen de ciudad origen y van hacia ciudad destino de forma total durante\
         \ ese año de forma anual"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
+      description: "Dado una ciudad y un año obtiene el porcentaje total de personas\
         \ que salen de ciudad origen y van hacia ciudad destino de forma total durante\
         \ ese año de forma anual"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_anio"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_anio"
       produces:
       - "application/xml"
       - "application/json"
@@ -4126,17 +4126,17 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas salientes\
         \ ine_controller"
-  /INE/TuristasSalientes/ObtenerNumeroTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAnios/{CiudadDestino}:
+  /INE/TuristasSalientes/ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAnios/{CiudadDestino}:
     get:
       tags:
       - "Turistas Salientes INE"
-      summary: "Dado una ciudad y un año obtiene la cantidad total de personas que\
+      summary: "Dado una ciudad y un año obtiene el porcentaje total de personas que\
         \ salen de ciudad origen y van hacia ciudad destino de forma total durante\
         \ esos años de forma anual"
-      description: "Dado una ciudad y un año obtiene la cantidad total de personas\
+      description: "Dado una ciudad y un año obtiene el porcentaje total de personas\
         \ que salen de ciudad origen y van hacia ciudad destino de forma total durante\
         \ esos años de forma anual"
-      operationId: "obtener_cantidad_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_rango_anios"
+      operationId: "obtener_porcentaje_turistas_salientes_de_ciudad_origen_hacia_ciudad_destino_en_rango_anios"
       produces:
       - "application/xml"
       - "application/json"

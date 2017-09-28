@@ -2385,30 +2385,343 @@ class MySQLAccessINE:
         self.cursor = self.connection.cursor()
         self.query = (
                 "SELECT "+
-            "YEAR(ine_datos.fecha) AS AÑO, "+
-            "MONTH(ine_datos.fecha) AS MES, "+
-            "SUM(ine_datos.valor) AS CANTIDAD "+
-            "FROM "+
-                "ine_datos "+
-                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
-                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
-            "WHERE "+
-                "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_115 IN( "+
-                    "SELECT "+
-                    "     id "+
-                    "FROM "+
-                    "ine_valores_variables "+
-                    "WHERE "+
-                    "ine_valores_variables.name = %s "+
-                    ") AND ine_defserie_variables.var_96 IN( "+
-                    "SELECT "+
-                    "   id "+
-                    "FROM "+
-                    "  ine_valores_variables "+
-                    "WHERE "+
-                    " ine_valores_variables.name = %s "+
-                    ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
-                "GROUP BY  AÑO, MES")
+                "YEAR(ine_datos.fecha) AS AÑO, "+
+                "MONTH(ine_datos.fecha) AS MES, "+
+                "SUM(ine_datos.valor) AS CANTIDAD "+
+                "FROM "+
+                    "ine_datos "+
+                    "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                    "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_115 IN( "+
+                        "SELECT "+
+                        "     id "+
+                        "FROM "+
+                        "ine_valores_variables "+
+                        "WHERE "+
+                        "ine_valores_variables.name = %s "+
+                        ") AND ine_defserie_variables.var_96 IN( "+
+                        "SELECT "+
+                        "   id "+
+                        "FROM "+
+                        "  ine_valores_variables "+
+                        "WHERE "+
+                        " ine_valores_variables.name = %s "+
+                        ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s "+
+                    "GROUP BY  AÑO, MES")
         self.cursor.execute(self.query,(CiudadDestino, CiudadOrigen, AnioInicio, AnioFin))  
         return self.cursor 
     
+##################################################################################################################################################################################################################################################################
+##################################################################################################################TURISTAS SALIENTES EN CIUDAD#################################################################################################################################
+##################################################################################################################################################################################################################################################################
+ 
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadEnAnio(self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                        "YEAR(ine_datos.fecha) AS AÑO, "+
+                        "AVG(ine_datos.valor) AS PORCENTAJE "+
+                    "FROM "+
+                        "ine_datos "+
+                    "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                    "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                    "WHERE "+
+                        "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                        "SELECT "+
+                         "   id "+
+                        "FROM "+
+                          "  ine_valores_variables "+
+                        "WHERE "+
+                           " ine_valores_variables.name LIKE %s "+
+                    ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 != '9975' "+
+                    "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_96 != '16473' "+
+                    "GROUP BY "+
+                        "AÑO")
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor 
+    
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadEnRangoAnios(self, Ciudad, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                    "SELECT "+
+                        "YEAR(ine_datos.fecha) AS AÑO, "+
+                        "AVG(ine_datos.valor) AS PORCENTAJE "+
+                    "FROM "+
+                        "ine_datos "+
+                    "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                    "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                    "WHERE "+
+                        "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                        "SELECT "+
+                         "   id "+
+                        "FROM "+
+                          "  ine_valores_variables "+
+                        "WHERE "+
+                           " ine_valores_variables.name LIKE %s "+
+                    ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 != '9975' "+
+                    "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_96 != '16473'"+
+                    "GROUP BY "+
+                        "AÑO")
+        self.cursor.execute(self.query,(Ciudad, AnioInicio, AnioFin))  
+        return self.cursor 
+    
+    
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadEnRangoAniosEnMes(self, Ciudad, AnioInicio, AnioFin, Mes):  
+      self.cursor = self.connection.cursor()
+      self.query = (    
+                      "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "AVG(ine_datos.valor) AS PORCENTAJE "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                    "SELECT "+
+                    "    id "+
+                    "FROM "+
+                    "    ine_valores_variables "+
+                    "WHERE "+
+                    "    ine_valores_variables.name LIKE %s "+
+                ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND MONTH(ine_datos.fecha) = %s  "+
+                "AND ine_defserie_variables.var_96 != '9975' AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965'  "+
+                "AND ine_defserie_variables.var_96 != '16473' "+
+                "GROUP BY "+
+                "    AÑO ")
+      Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+      self.cursor.execute(self.query,(Ciudad, AnioInicio, AnioFin, Mes))  
+      return self.cursor 
+      
+      
+      
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadEnAnioMensualmente(self, Ciudad, Anio):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "MONTH(ine_datos.fecha) AS MES, "+
+                    "ine_datos.valor AS PORCENTAJE "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                    "SELECT "+
+                    "    id "+
+                    "FROM "+
+                    "    ine_valores_variables "+
+                    "WHERE "+
+                    "    ine_valores_variables.name LIKE %s  "+
+                ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 != '9975'  "+
+                "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_96 != '16473' "+
+                "GROUP BY "+
+                    "AÑO, MES")
+        self.cursor.execute(self.query,(Ciudad, Anio, Anio))  
+        return self.cursor 
+    
+    
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadEnRangoAniosMensualmente(self, Ciudad, AnioInicio, AnioFin):
+      self.cursor = self.connection.cursor()
+      self.query = (
+                "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "MONTH(ine_datos.fecha) AS MES, "+
+                    "ine_datos.valor AS PORCENTAJE "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                    "SELECT "+
+                    "    id "+
+                    "FROM "+
+                    "    ine_valores_variables "+
+                    "WHERE "+
+                    "    ine_valores_variables.name LIKE %s  "+
+                ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 != '9975'  "+
+                "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_96 != '16473' "+
+                "GROUP BY "+
+                    "AÑO, MES")
+      self.cursor.execute(self.query,(Ciudad, AnioInicio, AnioFin))  
+      return self.cursor 
+      
+
+
+
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAnios(self, CiudadOrigen, CiudadDestino, AnioInicio, AnioFin):
+        self.cursor = self.connection.cursor()
+        self.query = (
+                "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "AVG(ine_datos.valor) AS PORCENTAJE "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                    "SELECT "+
+                   "     id "+
+                    "FROM "+
+                  "      ine_valores_variables "+
+                    "WHERE "+
+                 "       ine_valores_variables.name LIKE %s "+
+                ") AND ine_defserie_variables.var_115 IN( "+
+                "SELECT "+
+                   " id "+
+                "FROM "+
+                  "  ine_valores_variables "+
+                "WHERE "+
+                 "   ine_valores_variables.name LIKE %s "+
+                ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND  "+
+                "ine_defserie_variables.var_96 != '9975' AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965'  "+
+                "AND ine_defserie_variables.var_96 != '16473' "+
+                "GROUP BY "+
+                "    AÑO")   
+        self.cursor.execute(self.query,(CiudadOrigen, CiudadDestino, AnioInicio, AnioFin))  
+        return self.cursor 
+      
+
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAniosMensualmente(self, CiudadOrigen, CiudadDestino, AnioInicio, AnioFin):
+          self.cursor = self.connection.cursor()
+          self.query = (
+                      "SELECT "+
+                          "YEAR(ine_datos.fecha) AS AÑO, "+
+                          "MONTH(ine_datos.fecha) AS MES, "+
+                          "ine_datos.valor AS PORCENTAJE "+
+                      "FROM "+
+                      "  ine_datos "+
+                      "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                      "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                      "WHERE "+
+                       " ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                         "   ine_valores_variables "+
+                        "WHERE "+
+                          "  ine_valores_variables.name LIKE %s "+
+                    ") AND ine_defserie_variables.var_115 IN( "+
+                    "SELECT "+
+                     "   id "+
+                    "FROM "+
+                      "  ine_valores_variables "+
+                    "WHERE "+
+                       " ine_valores_variables.name LIKE %s "+
+                    ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 != '9975'  "+
+                    "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_96 != '16473' "+
+                    "GROUP BY "+
+                     "   AÑO,  MES")
+          self.cursor.execute(self.query,(CiudadOrigen, CiudadDestino, AnioInicio, AnioFin))  
+          return self.cursor 
+      
+      
+      
+      
+      
+      
+      
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnAnio(self, CiudadOrigen, CiudadDestino, Anio):
+          self.cursor = self.connection.cursor()
+          self.query = (
+                "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "AVG(ine_datos.valor) AS PORCENTAJE "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                    "SELECT "+
+                   "     id "+
+                    "FROM "+
+                  "      ine_valores_variables "+
+                    "WHERE "+
+                 "       ine_valores_variables.name LIKE %s "+
+                ") AND ine_defserie_variables.var_115 IN( "+
+                "SELECT "+
+                   " id "+
+                "FROM "+
+                  "  ine_valores_variables "+
+                "WHERE "+
+                 "   ine_valores_variables.name LIKE %s "+
+                ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND  "+
+                "ine_defserie_variables.var_96 != '9975' AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965'  "+
+                "AND ine_defserie_variables.var_96 != '16473' "+
+                "GROUP BY "+
+                "    AÑO")   
+          self.cursor.execute(self.query,(CiudadOrigen, CiudadDestino, Anio, Anio))  
+          return self.cursor
+      
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnAnioMensualmente(self, CiudadOrigen, CiudadDestino, Anio):
+          self.cursor = self.connection.cursor()
+          self.query = (
+                      "SELECT "+
+                          "YEAR(ine_datos.fecha) AS AÑO, "+
+                          "MONTH(ine_datos.fecha) AS MES, "+
+                          "ine_datos.valor AS PORCENTAJE "+
+                      "FROM "+
+                      "  ine_datos "+
+                      "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                      "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                      "WHERE "+
+                       " ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                        "SELECT "+
+                        "    id "+
+                        "FROM "+
+                         "   ine_valores_variables "+
+                        "WHERE "+
+                          "  ine_valores_variables.name LIKE %s "+
+                    ") AND ine_defserie_variables.var_115 IN( "+
+                    "SELECT "+
+                     "   id "+
+                    "FROM "+
+                      "  ine_valores_variables "+
+                    "WHERE "+
+                       " ine_valores_variables.name LIKE %s "+
+                    ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND ine_defserie_variables.var_96 != '9975'  "+
+                    "AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965' AND ine_defserie_variables.var_96 != '16473' "+
+                    "GROUP BY "+
+                     "   AÑO,  MES")
+          self.cursor.execute(self.query,(CiudadOrigen, CiudadDestino, Anio, Anio))  
+          return self.cursor 
+      
+    def ObtenerPorcentajeTotalTuristasSalientesDeCiudadOrigenACiudadDestinoEnRangoAniosEnMes(self, CiudadOrigen, CiudadDestino, AnioInicio, AnioFin, Mes):
+          self.cursor = self.connection.cursor()
+          self.query = (
+                "SELECT "+
+                    "YEAR(ine_datos.fecha) AS AÑO, "+
+                    "ine_datos.valor AS PORCENTAJE "+
+                "FROM "+
+                    "ine_datos "+
+                "JOIN ine_defserie_variables ON ine_datos.serie_id = ine_defserie_variables.id "+
+                "JOIN ine_defserie ON ine_defserie_variables.defserie_id = ine_defserie.id "+
+                "WHERE "+
+                    "ine_defserie.name = 'Viajeros' AND ine_defserie.unidad = '50' AND ine_defserie_variables.var_96 IN( "+
+                    "SELECT "+
+                   "     id "+
+                    "FROM "+
+                  "      ine_valores_variables "+
+                    "WHERE "+
+                 "       ine_valores_variables.name LIKE %s "+
+                ") AND ine_defserie_variables.var_115 IN( "+
+                "SELECT "+
+                   " id "+
+                "FROM "+
+                  "  ine_valores_variables "+
+                "WHERE "+
+                 "   ine_valores_variables.name LIKE %s "+
+                ") AND YEAR(ine_datos.fecha) >= %s AND YEAR(ine_datos.fecha) <= %s AND MONTH(ine_datos.fecha) = %s  AND "+
+                "ine_defserie_variables.var_96 != '9975' AND ine_defserie_variables.var_96 != '19964' AND ine_defserie_variables.var_96 != '19965'  "+
+                "AND ine_defserie_variables.var_96 != '16473' "+
+                "GROUP BY "+
+                "    AÑO") 
+          Mes = self.ObtenerNumeroMesDadoNombre(Mes)
+          self.cursor.execute(self.query,(CiudadOrigen, CiudadDestino, AnioInicio, AnioFin, Mes))  
+          return self.cursor
+      
