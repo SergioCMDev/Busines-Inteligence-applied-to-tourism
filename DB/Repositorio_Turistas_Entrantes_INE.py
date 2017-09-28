@@ -13,54 +13,47 @@ class RepositoryTuristasEntrantesINE():
     #####################################################################################################################################################################
     ##################################NUMERO DE TURISTAS ENTRANTES EN CIUDAD####################################################
     #####################################################################################################################################################################
-
     def ObtenerNumeroTotalTuristasEntrantesEnCiudadEnAnio( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Pais_Origen','Ciudad_Origen','Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadEnAnio( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerNumeroTotalTuristasEntrantesEnCiudadEnAnioMensualmente( self, Ciudad, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes','Pais_Origen','Ciudad_Origen', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadEnAnioMensualmente( Ciudad, str(Anio)), self.labels) 
     
     def ObtenerNumeroTotalTuristasEntrantesEnCiudadEnRangoAnios(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadEnRangoAnios( Ciudad, str(anioInicio), str(anioFin)), self.labels) 
     
     def ObtenerNumeroTotalTuristasEntrantesEnCiudadEnRangoAniosEnMes(self, Ciudad, anioInicio, anioFin, Mes):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Cantidad']
         return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadEnRangoAniosEnMes(Ciudad, str(anioInicio), str(anioFin), Mes), self.labels) 
   
     def ObtenerNumeroTotalTuristasEntrantesEnCiudadEnRangoAniosMensualmente(self, Ciudad, anioInicio, anioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
         return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadEnRangoAniosMensualmente(Ciudad, str(anioInicio), str(anioFin)), self.labels) 
   
     def ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosEnMes(self, CiudadDestino, CiudadOrigen, AnioInicio, AnioFin, Mes):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
-        return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosEnMes(CiudadDestino, CiudadOrigen, str(anioInicio), str(anioFin)), self.labels) 
+        self.labels   = ['Anio', 'Cantidad']
+        return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosEnMes(CiudadDestino, CiudadOrigen, str(AnioFin), str(AnioFin), Mes), self.labels) 
   
-    def ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnAnio(self, CiudadDestino, CiudadOrigen, Anio):
+    def ObtenerPorcentajeTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnAnio(self, CiudadDestino, CiudadOrigen, Anio):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
-        return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnAnio(CiudadDestino, CiudadOrigen, str(Anio)), self.labels) 
+        self.labels   = ['Anio', 'Cantidad']
+        return (self.db.ObtenerPorcentajeTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnAnio(CiudadDestino, CiudadOrigen, str(Anio)), self.labels) 
   
-    def ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosEnMes(self, CiudadDestino, CiudadOrigen, AnioInicio, AnioFin, Mes):
+    def ObtenerPorcentajeTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAnios(self, CiudadDestino, CiudadOrigen, AnioInicio, AnioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
-        return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosEnMes(CiudadDestino, CiudadOrigen, str(AnioInicio), str(AnioFin), Mes), self.labels) 
+        self.labels   = ['Anio', 'Cantidad']
+        return (self.db.ObtenerPorcentajeTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAnios(CiudadDestino, CiudadOrigen, str(AnioInicio), str(AnioFin)), self.labels) 
 
-    def ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAnios(self, CiudadDestino, CiudadOrigen, AnioInicio, AnioFin):
+    def ObtenerPorcentajeTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosMensualmente(self, CiudadDestino, CiudadOrigen, AnioInicio, AnioFin):
         self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
-        return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosEnMes(CiudadDestino, CiudadOrigen, str(AnioInicio), str(AnioFin)), self.labels) 
-
-    def ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosMensualmente(self, CiudadDestino, CiudadOrigen, AnioInicio, AnioFin):
-        self.db = DBContext()
-        self.labels   = ['Anio', 'Mes', 'Numero_Turistas']
-        return (self.db.ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosMensualmente(CiudadDestino, CiudadOrigen, str(AnioInicio), str(AnioFin)), self.labels) 
-  
+        self.labels   = ['Anio', 'Mes', 'Cantidad']
+        return (self.db.ObtenerPorcentajeTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosMensualmente(CiudadDestino, CiudadOrigen, str(AnioInicio), str(AnioFin)), self.labels) 

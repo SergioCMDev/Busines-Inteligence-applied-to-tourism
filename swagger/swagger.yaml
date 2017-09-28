@@ -3884,9 +3884,8 @@ paths:
         in: "query"
         description: "Mes"
         required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
+        type: "string"
+        default: "Enero"
       responses:
         200:
           description: "successful operation"
@@ -3894,17 +3893,17 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas entrantes\
         \ ine_controller"
-  /INE/TuristaEntrantes/ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnAnio/{CiudadDestino}:
+  /INE/TuristaEntrantes/ObtenerPorcentajeTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnAnio/{CiudadDestino}:
     get:
       tags:
       - "Turistas Entrantes INE"
-      summary: "Dado una ciudad destino, una ciudad origen y un año obtiene la cantidad\
+      summary: "Dado una ciudad destino, una ciudad origen y un año obtiene el porcentaje\
         \ total de personas que llegan a ciudad Destino desde ciudad origen durante\
         \ ese año de forma anual"
-      description: "Dado una ciudad destino, una ciudad origen y un año obtiene la\
-        \ cantidad total de personas que llegan a ciudad Destino desde ciudad origen\
+      description: "Dado una ciudad destino, una ciudad origen y un año obtiene el porcentaje\
+        \ total de personas que llegan a ciudad Destino desde ciudad origen\
         \ durante ese año de forma anual"
-      operationId: "obtener_cantidad_turistas_entrantes_en_ciudad_destino_desde_ciudad_origen_en_anio"
+      operationId: "obtener_porcentaje_turistas_entrantes_en_ciudad_destino_desde_ciudad_origen_en_anio"
       produces:
       - "application/xml"
       - "application/json"
@@ -3935,17 +3934,17 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas entrantes\
         \ ine_controller"
-  /INE/TuristaEntrantes/ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAnios/{CiudadDestino}:
+  /INE/TuristaEntrantes/ObtenerPorcentajeTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAnios/{CiudadDestino}:
     get:
       tags:
       - "Turistas Entrantes INE"
       summary: "Dado una ciudad destino, una ciudad origen y un rango de años obtiene\
-        \ la cantidad total de personas que llegan a ciudad destino desde ciudad origen\
+        \ el porcentaje total de personas que llegan a ciudad destino desde ciudad origen\
         \ durante esos años de forma anual"
       description: "Dado una ciudad destino, una ciudad origen y un rango de años\
-        \ obtiene la cantidad total de personas que llegan a ciudad destino desde\
+        \ obtiene el porcentaje total de personas que llegan a ciudad destino desde\
         \ ciudad origen durante esos años de forma anual"
-      operationId: "obtener_cantidad_turistas_entrantes_en_ciudad_destino_desde_ciudad_origen_en_rango_anios"
+      operationId: "obtener_porcentaje_turistas_entrantes_en_ciudad_destino_desde_ciudad_origen_en_rango_anios"
       produces:
       - "application/xml"
       - "application/json"
@@ -3983,7 +3982,7 @@ paths:
           description: "Invalid country value"
       x-swagger-router-controller: "swagger_server.controllers.turistas entrantes\
         \ ine_controller"
-  ? /INE/TuristaEntrantes/ObtenerNumeroTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosMensualmente/{CiudadDestino}
+  ? /INE/TuristaEntrantes/ObtenerPorcentajeTotalTuristasEntrantesEnCiudadDestinoDesdeCiudadOrigenEnRangoAniosMensualmente/{CiudadDestino}
   : get:
       tags:
       - "Turistas Entrantes INE"
@@ -3994,7 +3993,7 @@ paths:
         \ obtiene la cantidad total de personas que salen de ciudad origen y van hacia\
         \ ciudad destino de forma total durante esos años de forma anual separando\
         \ por meses"
-      operationId: "obtener_cantidad_turistas_entrantes_en_ciudad_destino_desde_ciudad_origen_en_rango_anio_mensualmente"
+      operationId: "obtener_porcentaje_turistas_entrantes_en_ciudad_destino_desde_ciudad_origen_en_rango_anio_mensualmente"
       produces:
       - "application/xml"
       - "application/json"
@@ -4077,9 +4076,8 @@ paths:
         in: "query"
         description: "Mes"
         required: true
-        type: "integer"
-        default: 2004
-        format: "int64"
+        type: "string"
+        default: "Enero"
       responses:
         200:
           description: "successful operation"
