@@ -2,7 +2,7 @@
 """
 Created on Sat Jul  1 12:28:06 2017
 
-@author: wesrok
+@author: Sergio Cristauro Manzano
 """
 #import pymysql
 import mysql.connector

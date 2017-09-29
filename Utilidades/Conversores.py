@@ -2,7 +2,7 @@
 """
 Created on Sat Jul  1 15:10:19 2017
 
-@author: wesrok
+@author: Sergio Cristauro Manzano
 """
 from decimal import Decimal
 import json

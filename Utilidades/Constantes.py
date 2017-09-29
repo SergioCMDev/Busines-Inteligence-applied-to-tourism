@@ -2,7 +2,7 @@
 """
 Created on Tue Jun 27 19:10:03 2017
 
-@author: wesrok
+@author: Sergio Cristauro Manzano
 """
 class Constantes:
     Meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']

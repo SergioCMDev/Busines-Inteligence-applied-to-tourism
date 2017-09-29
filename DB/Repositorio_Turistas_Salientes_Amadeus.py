@@ -2,7 +2,7 @@
 """
 Created on Sun Jun 25 12:50:46 2017
 
-@author: wesrok
+@author: Sergio Cristauro Manzano
 """
 from ..DB.MySQL_Amadeus import MySQLAccessAmadeus as DBContext #Server
 #from self.db.MySQL import MySQLAccess as DBContext #Local

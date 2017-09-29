@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # ! python3
 """
-@author: wesrok
+@author: Sergio Cristauro Manzano
 """
 from ..Utilidades.Constantes import Constantes
 import numpy as np
